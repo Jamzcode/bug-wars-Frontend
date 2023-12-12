@@ -1,16 +1,7 @@
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-  </div>
+  <div>My Login</div>
 </template>
 
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
-</script>
+<script></script>
 
 <style scoped></style>

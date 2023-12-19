@@ -1,15 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_REMOTE_API,
-  headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
-<<<<<<< HEAD
-    // Add any other necessary headers
-=======
->>>>>>> dev
-  }
+  baseURL: import.meta.env.VITE_REMOTE_API
 })
 
 export default {

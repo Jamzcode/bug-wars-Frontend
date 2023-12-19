@@ -3,12 +3,8 @@
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home | </RouterLink>
-<<<<<<< HEAD
         <RouterLink to="/login">Login | </RouterLink>
         <RouterLink to="/users">Users</RouterLink>
-=======
-        <RouterLink to="/login">Login</RouterLink>
->>>>>>> dev
       </nav>
     </div>
   </header>

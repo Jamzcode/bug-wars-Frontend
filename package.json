@@ -8,18 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
-<<<<<<< HEAD
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "format": "prettier --write src/"
   },
   "dependencies": {
-=======
-    "test:unit:coverage": "vitest --coverage"
-  },
-  "dependencies": {
-    "@vitest/coverage-v8": "^1.0.4",
->>>>>>> dev
     "axios": "^1.6.2",
     "pinia": "^2.1.7",
     "vue": "^3.3.10",
@@ -33,11 +24,6 @@
     "eslint-plugin-vue": "^9.17.0",
     "gh-pages": "^6.1.0",
     "prettier": "^3.0.3",
-<<<<<<< HEAD
     "vite": "^5.0.5"
-=======
-    "vite": "^5.0.5",
-    "vitest": "^1.0.4"
->>>>>>> dev
   }
 }

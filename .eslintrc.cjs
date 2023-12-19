@@ -13,7 +13,6 @@ module.exports = {
   },
   env: {
     browser: true,
-    es6: true,
-    jest: true // Add Jest environment
+    es6: true
   }
 }

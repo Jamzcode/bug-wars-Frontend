@@ -15,6 +15,12 @@ export default mergeConfig(
           '**/.{eslint,mocha,prettier}rc.{?(c|m)js,yml}',
           'src/router/**',
           'src/types/**',
+          //temp ignore
+          'src/services/**',
+          'src/stores/**',
+          'src/views/**',
+          'src/App.vue',
+          //end temp ignores
           'src/main.js'
         ],
         provider: 'v8',

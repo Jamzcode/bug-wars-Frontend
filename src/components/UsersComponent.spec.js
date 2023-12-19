@@ -18,7 +18,7 @@ describe('UsersComponent', () => {
     const wrapper = shallowMount(UsersComponent)
 
     // Trigger getUserById method and wait for the promise to resolve
-    await wrapper.find('button').trigger('click') // Adjust the selector as needed
+    await wrapper.find('button').trigger('click')
 
     // Check if the user is updated
     expect(wrapper.find('p').text()).toContain('one user:')

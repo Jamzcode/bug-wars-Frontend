@@ -20,7 +20,8 @@ export default mergeConfig(
           'src/services/**',
           'src/stores/**',
           'src/views/**',
-          'src/App.vue'
+          'src/App.vue',
+          'src/components/UsersComponent.vue'
         ],
         provider: 'v8',
         reporter: ['text', 'json-summary', 'json'],

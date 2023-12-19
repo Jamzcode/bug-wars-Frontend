@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <h1>My Users</h1>
     <button type="button" v-on:click="getUsers()">click to view users</button>
@@ -39,4 +39,4 @@ export default {
     }
   }
 }
-</script>
+</script> -->

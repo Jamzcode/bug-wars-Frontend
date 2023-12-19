@@ -5,7 +5,10 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
+<<<<<<< HEAD
     // Add any other necessary headers
+=======
+>>>>>>> dev
   }
 })
 

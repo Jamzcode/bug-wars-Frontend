@@ -3,7 +3,8 @@
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home | </RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
+        <RouterLink to="/login">Login | </RouterLink>
+        <RouterLink to="/users">Users</RouterLink>
       </nav>
     </div>
   </header>

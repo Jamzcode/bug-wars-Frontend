@@ -1,7 +1,5 @@
 name: 'Tests with coverage'
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -23,7 +21,9 @@ jobs:
           node-version: '16.x'
       - name: 'Install Deps'
         run: npm install
-      - name: 'Test'
+      - name: 'Make Sure It Builds'
+        run: npm run build
+      - name: 'Run Tests'
         run: npm run test:unit:coverage
       - name: 'Report Coverage'
         if: always() # Also generate the report if tests are failing

@@ -1,18 +1,33 @@
-name: Build Vue
+name: 'Tests with coverage'
 on:
-  push:
+  pull_request:
     branches: [main]
-permissions:
-  id-token: write
-  pages: write
+
 jobs:
-  build_vue:
+  test:
     runs-on: ubuntu-latest
-    name: Build Vue
+
+    permissions:
+      # Required to checkout the code
+      contents: read
+      # Required to put a comment into the pull-request
+      pull-requests: write
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Vue App to Github Pages
-        uses: dencee/VuePagesAction@v1.0.0
-        env:
-          VITE_REMOTE_API: ${{vars.VITE_REMOTE_API}}
+      - uses: actions/checkout@v3
+      - name: 'Install Node'
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: 'Install Deps'
+        run: npm ci
+      - name: 'Make Sure It Builds'
+        run: npm run build
+      - name: 'Run Unit Tests'
+        run: npm run test:unit:coverage
+      - name: 'Report Coverage'
+        if: always() # Also generate the report if tests are failing
+        uses: davelosert/vitest-coverage-report-action@v2
+
+      - name: 'Run E2E Tests'
+        run: npm run test:e2e:prebuilt

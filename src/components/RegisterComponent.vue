@@ -59,7 +59,7 @@
 import authService from '@/services/AuthService'
 import UserService from '@/services/users'
 import useValidate from '@vuelidate/core'
-import { required, email, minLength, sameAs } from '@vuelidate/validators'
+import { required, email, minLength, maxLength, sameAs } from '@vuelidate/validators'
 export default {
   data() {
     return {
@@ -80,7 +80,7 @@ export default {
   validations() {
     return {
       user: {
-        username: { required, minLength: minLength(3) },
+        username: { required, minLength: minLength(6), maxLength: maxLength(12) },
         email: { required, email },
         password: {
           password: { required, minLength: minLength(6) },
@@ -147,38 +147,37 @@ export default {
         this.throwUsernameError === false &&
         this.throwEmailError === false
       ) {
-        alert('valid username')
-        // authService
-        //   .register(this.user)
-        //   .then((response) => {
-        //     if (response.status === 201) {
-        //       this.success('Thank you for registering, please sign in.')
-        //       this.$router.push({
-        //         path: '/login'
-        //       })
-        //     }
-        //   })
-        //   .catch((error) => {
-        //     const response = error.response
-        //     if (!response) {
-        //       this.error(error)
-        //     } else if (response.status === 400) {
-        //       if (response.data.errors) {
-        //         // Show the validation errors
-        //         let msg = 'Validation error: '
-        //         for (let err of response.data.errors) {
-        //           msg += `'${err.field}':${err.defaultMessage}. `
-        //         }
-        //         this.error(msg)
-        //       } else {
-        //         this.error(response.data.message)
-        //       }
-        //     } else {
-        //       this.error(response.data.message)
-        //     }
-        //   })
+        authService
+          .register(this.user)
+          .then((response) => {
+            if (response.status === 201) {
+              this.success('Thank you for registering, please sign in.')
+              this.$router.push({
+                path: '/login'
+              })
+            }
+          })
+          .catch((error) => {
+            const response = error.response
+            if (!response) {
+              this.error(error)
+            } else if (response.status === 400) {
+              if (response.data.errors) {
+                // Show the validation errors
+                let msg = 'Validation error: '
+                for (let err of response.data.errors) {
+                  msg += `'${err.field}':${err.defaultMessage}. `
+                }
+                this.error(msg)
+              } else {
+                this.error(response.data.message)
+              }
+            } else {
+              this.error(response.data.message)
+            }
+          })
       } else {
-        alert('Please review your information')
+        alert('Error: Please review your information')
       }
     }
   }

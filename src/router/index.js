@@ -25,7 +25,10 @@ const router = createRouter({
     {
       path: '/register',
       name: 'register',
-      component: RegisterView
+      component: RegisterView,
+      meta: {
+        requiresAuth: false
+      }
     }
   ]
 })

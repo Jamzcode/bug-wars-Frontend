@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>register test</div>
 </template>
 <script>
 import AuthService from '@/services/AuthService'

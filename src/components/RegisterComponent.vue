@@ -1,7 +1,6 @@
 <template>
   <div>
     <div id="register">
-      <h1>Create Account</h1>
       <form v-on:submit.prevent="register">
         <div id="fields">
           <label for="username">Username</label>

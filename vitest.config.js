@@ -20,18 +20,17 @@ export default mergeConfig(
           'src/services/**',
           'src/stores/**',
           'src/views/**',
-          'src/App.vue',
-          'src/components/UsersComponent.vue'
+          'src/App.vue'
         ],
         provider: 'v8',
         reporter: ['text', 'json-summary', 'json'],
-        reportOnFailure: true
-        // thresholds: {
-        //   lines: 80,
-        //   functions: 80,
-        //   branches: 80,
-        //   statements: 80
-        // }
+        reportOnFailure: true,
+        thresholds: {
+          lines: 80,
+          functions: 80,
+          branches: 80,
+          statements: 80
+        }
       }
     }
   })

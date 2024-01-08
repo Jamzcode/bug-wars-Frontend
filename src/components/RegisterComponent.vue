@@ -1,8 +1,8 @@
 <template>
   <div>
     <div id="register">
+      <h1>Create Account</h1>
       <form v-on:submit.prevent="register">
-        <h1>Create Account</h1>
         <div id="fields">
           <label for="username">Username</label>
           <input
@@ -10,28 +10,42 @@
             id="username"
             placeholder="Username"
             v-model="user.username"
-            required
             autofocus
           />
+          <br />
+          <br />
+
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Email" v-model="user.email" required />
+          <input type="text" id="email" placeholder="Email" v-model="user.email" />
+          <span class="err-msg" v-if="v$.user.email.$error">
+            {{ v$.user.email.$errors[0].$message }}
+          </span>
+          <br />
+          <br />
 
           <label for="password">Password</label>
           <input
             type="password"
             id="password"
             placeholder="Password"
-            v-model="user.password"
-            required
+            v-model="user.password.password"
           />
+          <span class="err-msg" v-if="v$.user.password.password.$error">
+            {{ v$.user.password.password.$errors[0].$message }}</span
+          >
+          <br />
+          <br />
+
           <label for="confirmPassword">Confirm password</label>
           <input
             type="password"
             id="confirmPassword"
             placeholder="Confirm Password"
-            v-model="user.confirmPassword"
-            required
+            v-model="user.password.confirm"
           />
+          <span class="err-msg" v-if="v$.user.password.confirm.$error"> passwords must match</span>
+          <br />
+          <br />
           <div>
             <button type="submit">Create Account</button>
           </div>
@@ -43,26 +57,43 @@
 </template>
 <script>
 import authService from '@/services/AuthService'
+import useValidate from '@vuelidate/core'
+import { required, email, minLength, sameAs } from '@vuelidate/validators'
 export default {
   data() {
     return {
+      v$: useValidate(),
       user: {
         username: '',
         email: '',
-        password: '',
-        confirmPassword: ''
+        password: {
+          password: '',
+          confirm: ''
+        }
       }
     }
   },
+  validations() {
+    return {
+      user: {
+        username: { required },
+        email: { required, email },
+        password: {
+          password: { required, minLength: minLength(6) },
+          confirm: { required, sameAs: sameAs(this.user.password.password) }
+        }
+      }
+    }
+  },
+
   methods: {
     register() {
-      if (this.user.password != this.user.confirmPassword) {
-        this.error('Password & Confirm Password do not match')
-      } else {
+      this.v$.$validate()
+      if (!this.v$.$pending && !this.v$.$error) {
         authService
           .register(this.user)
           .then((response) => {
-            if (response.status == 201) {
+            if (response.status === 201) {
               this.success('Thank you for registering, please sign in.')
               this.$router.push({
                 path: '/login'
@@ -88,9 +119,32 @@ export default {
               this.error(response.data.message)
             }
           })
+      } else {
+        alert('Please review your information')
       }
     }
   }
 }
 </script>
-<style scoped></style>
+<style scoped>
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+}
+
+#fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.err-msg {
+  color: red;
+}
+</style>

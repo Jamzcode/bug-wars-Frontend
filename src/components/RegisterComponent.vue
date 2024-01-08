@@ -15,6 +15,7 @@
           <span class="err-msg" v-if="v$.user.username.$error">
             {{ v$.user.username.$errors[0].$message }}
           </span>
+          <span class="err-msg" v-if="throwUsernameError === true">USERNAME EXISTS</span>
 
           <label for="email">Email</label>
           <input type="text" id="email" placeholder="Email" v-model="user.email" />
@@ -55,6 +56,7 @@
 </template>
 <script>
 import authService from '@/services/AuthService'
+import UserService from '@/services/users'
 import useValidate from '@vuelidate/core'
 import { required, email, minLength, sameAs } from '@vuelidate/validators'
 export default {
@@ -68,7 +70,9 @@ export default {
           password: '',
           confirm: ''
         }
-      }
+      },
+      existingUsers: [],
+      throwUsernameError: false
     }
   },
   validations() {
@@ -85,38 +89,64 @@ export default {
   },
 
   methods: {
-    register() {
-      this.v$.$validate()
-      if (!this.v$.$pending && !this.v$.$error) {
-        authService
-          .register(this.user)
-          .then((response) => {
-            if (response.status === 201) {
-              this.success('Thank you for registering, please sign in.')
-              this.$router.push({
-                path: '/login'
-              })
-            }
-          })
-          .catch((error) => {
-            const response = error.response
-            if (!response) {
-              this.error(error)
-            } else if (response.status === 400) {
-              if (response.data.errors) {
-                // Show the validation errors
-                let msg = 'Validation error: '
-                for (let err of response.data.errors) {
-                  msg += `'${err.field}':${err.defaultMessage}. `
-                }
-                this.error(msg)
-              } else {
-                this.error(response.data.message)
-              }
+    async checkUsername() {
+      if (this.user.username) {
+        try {
+          await UserService.getUsers().then((resp) => {
+            this.existingUsers = resp.data
+            const usernameExists = this.existingUsers.some(
+              (existingUser) =>
+                existingUser.username.toLowerCase() === this.user.username.toLowerCase()
+            )
+            if (usernameExists) {
+              this.throwUsernameError = true
+              return false
             } else {
-              this.error(response.data.message)
+              this.throwUsernameError = false
+              return true
             }
           })
+        } catch (error) {
+          alert(error)
+        }
+      }
+    },
+
+    async register() {
+      await this.checkUsername()
+
+      this.v$.$validate()
+      if (!this.v$.$pending && !this.v$.$error && this.throwUsernameError === false) {
+        alert('valid username')
+        // authService
+        //   .register(this.user)
+        //   .then((response) => {
+        //     if (response.status === 201) {
+        //       this.success('Thank you for registering, please sign in.')
+        //       this.$router.push({
+        //         path: '/login'
+        //       })
+        //     }
+        //   })
+        //   .catch((error) => {
+        //     const response = error.response
+        //     if (!response) {
+        //       this.error(error)
+        //     } else if (response.status === 400) {
+        //       if (response.data.errors) {
+        //         // Show the validation errors
+        //         let msg = 'Validation error: '
+        //         for (let err of response.data.errors) {
+        //           msg += `'${err.field}':${err.defaultMessage}. `
+        //         }
+        //         this.error(msg)
+        //       } else {
+        //         this.error(response.data.message)
+        //       }
+        //     } else {
+        //       this.error(response.data.message)
+        //     }
+        //   })
       } else {
         alert('Please review your information')
       }

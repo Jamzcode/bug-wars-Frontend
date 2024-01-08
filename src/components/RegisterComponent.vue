@@ -12,16 +12,15 @@
             v-model="user.username"
             autofocus
           />
-          <br />
-          <br />
+          <span class="err-msg" v-if="v$.user.username.$error">
+            {{ v$.user.username.$errors[0].$message }}
+          </span>
 
           <label for="email">Email</label>
           <input type="text" id="email" placeholder="Email" v-model="user.email" />
           <span class="err-msg" v-if="v$.user.email.$error">
             {{ v$.user.email.$errors[0].$message }}
           </span>
-          <br />
-          <br />
 
           <label for="password">Password</label>
           <input
@@ -33,8 +32,6 @@
           <span class="err-msg" v-if="v$.user.password.password.$error">
             {{ v$.user.password.password.$errors[0].$message }}</span
           >
-          <br />
-          <br />
 
           <label for="confirmPassword">Confirm password</label>
           <input
@@ -43,9 +40,10 @@
             placeholder="Confirm Password"
             v-model="user.password.confirm"
           />
-          <span class="err-msg" v-if="v$.user.password.confirm.$error"> passwords must match</span>
-          <br />
-          <br />
+          <span class="err-msg" v-if="v$.user.password.confirm.$error">
+            passwords do not match</span
+          >
+
           <div>
             <button type="submit">Create Account</button>
           </div>
@@ -76,7 +74,7 @@ export default {
   validations() {
     return {
       user: {
-        username: { required },
+        username: { required, minLength: minLength(3) },
         email: { required, email },
         password: {
           password: { required, minLength: minLength(6) },

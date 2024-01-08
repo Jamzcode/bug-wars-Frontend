@@ -22,6 +22,7 @@
           <span class="err-msg" v-if="v$.user.email.$error">
             {{ v$.user.email.$errors[0].$message }}
           </span>
+          <span class="err-msg" v-if="throwEmailError === true">EMAIL EXISTS</span>
 
           <label for="password">Password</label>
           <input
@@ -113,37 +114,39 @@ export default {
       }
     },
 
-    // async checkEmail() {
-    //   if (this.user.email) {
-    //     try {
-    //       await UserService.getUsers().then((resp) => {
-    //         this.existingUsers = resp.data
-    //         const emailExists = this.existingUsers.some(
-    //           (existingUser) =>
-    //             existingUser.email.toLowerCase() === this.user.email.toLowerCase()
-    //         )
-    //         if (emailExists) {
-    //           this.throwEmailError = true
-    //           return false
-    //         } else {
-    //           this.throwEmailError = false
-    //           return true
-    //         }
-    //       })
-    //     } catch (error) {
-    //       alert(error)
-    //     }
-    //   }
-    // },
+    async checkEmail() {
+      if (this.user.email) {
+        try {
+          await UserService.getUsers().then((resp) => {
+            this.existingUsers = resp.data
+            const emailExists = this.existingUsers.some(
+              (existingUser) => existingUser.email.toLowerCase() === this.user.email.toLowerCase()
+            )
+            if (emailExists) {
+              this.throwEmailError = true
+              return false
+            } else {
+              this.throwEmailError = false
+              return true
+            }
+          })
+        } catch (error) {
+          alert(error)
+        }
+      }
+    },
 
     async register() {
       await this.checkUsername()
-      //await this.checkEmail()
+      await this.checkEmail()
 
       this.v$.$validate()
-      if (!this.v$.$pending && !this.v$.$error && this.throwUsernameError === false) {
-        //TODO: Add &&this.throwEmailError === false once email is added to DB
-
+      if (
+        !this.v$.$pending &&
+        !this.v$.$error &&
+        this.throwUsernameError === false &&
+        this.throwEmailError === false
+      ) {
         alert('valid username')
         // authService
         //   .register(this.user)

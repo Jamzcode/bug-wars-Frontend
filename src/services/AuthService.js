@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default {
+const authService = {
   login(user) {
     return axios.post('/login', user)
   },
@@ -9,3 +9,5 @@ export default {
     return axios.post('/register', user)
   }
 }
+
+export default authService

@@ -14,14 +14,16 @@
           <span class="err-msg" v-if="v$.user.username.$error">
             {{ v$.user.username.$errors[0].$message }}
           </span>
-          <span class="err-msg" v-if="throwUsernameError === true">USERNAME EXISTS</span>
+          <span class="err-msg" id="username-err" v-if="throwUsernameError === true"
+            >USERNAME EXISTS</span
+          >
 
           <label for="email">Email</label>
           <input type="text" id="email" placeholder="Email" v-model="user.email" />
           <span class="err-msg" v-if="v$.user.email.$error">
             {{ v$.user.email.$errors[0].$message }}
           </span>
-          <span class="err-msg" v-if="throwEmailError === true">EMAIL EXISTS</span>
+          <span class="err-msg" id="email-err" v-if="throwEmailError === true">EMAIL EXISTS</span>
 
           <label for="password">Password</label>
           <input
@@ -30,7 +32,7 @@
             placeholder="Password"
             v-model="user.password.password"
           />
-          <span class="err-msg" v-if="v$.user.password.password.$error">
+          <span class="err-msg" id="password-err" v-if="v$.user.password.password.$error">
             {{ v$.user.password.password.$errors[0].$message }}</span
           >
 
@@ -41,7 +43,7 @@
             placeholder="Confirm Password"
             v-model="user.password.confirm"
           />
-          <span class="err-msg" v-if="v$.user.password.confirm.$error">
+          <span class="err-msg" id="confirm-err" v-if="v$.user.password.confirm.$error">
             passwords do not match</span
           >
 

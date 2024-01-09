@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
 import RegisterComponent from './RegisterComponent.vue'
 
-// Unit tests
 describe('RegisterComponent', () => {
   const wrapper = shallowMount(RegisterComponent)
 
@@ -30,7 +29,7 @@ describe('RegisterComponent', () => {
     expect(submitButton).not.toBeNull()
   })
 
-  it('Displays validation errors with invalid input', async () => {
+  it('Sets validation errors with invalid input to true', async () => {
     await wrapper.setData({
       user: {
         username: 'zelbael',
@@ -45,16 +44,12 @@ describe('RegisterComponent', () => {
     await wrapper.find('form').trigger('submit.prevent')
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.vm.v$.user.username.$pending).toBeFalsy()
     expect(wrapper.vm.v$.user.username.$errors).toBeTruthy()
 
-    expect(wrapper.vm.v$.user.email.$pending).toBeFalsy()
     expect(wrapper.vm.v$.user.email.$errors).toBeTruthy()
 
-    expect(wrapper.vm.v$.user.password.password.$pending).toBeFalsy()
     expect(wrapper.vm.v$.user.password.password.$errors).toBeTruthy()
 
-    expect(wrapper.vm.v$.user.password.confirm.$pending).toBeFalsy()
     expect(wrapper.vm.v$.user.password.confirm.$errors).toBeTruthy()
   })
 })

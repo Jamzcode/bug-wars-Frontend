@@ -6,7 +6,7 @@ const authService = {
   },
 
   register(user) {
-    return axios.post('/register', user)
+    return axios.post('/api/auth/register', user)
   }
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="register">
-      <form v-on:submit.prevent="register">
+      <form v-on:submit.prevent="register(user)">
         <div id="fields">
           <label for="username">Username</label>
           <input
@@ -26,14 +26,9 @@
           <span class="err-msg" id="email-err" v-if="throwEmailError === true">EMAIL EXISTS</span>
 
           <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            v-model="user.password.password"
-          />
-          <span class="err-msg" id="password-err" v-if="v$.user.password.password.$error">
-            {{ v$.user.password.password.$errors[0].$message }}</span
+          <input type="password" id="password" placeholder="Password" v-model="user.password" />
+          <span class="err-msg" id="password-err" v-if="v$.user.password.$error">
+            {{ v$.user.password.$errors[0].$message }}</span
           >
 
           <label for="confirmPassword">Confirm password</label>
@@ -41,11 +36,11 @@
             type="password"
             id="confirmPassword"
             placeholder="Confirm Password"
-            v-model="user.password.confirm"
+            v-model="confirmPassword"
           />
-          <span class="err-msg" id="confirm-err" v-if="v$.user.password.confirm.$error">
-            passwords do not match</span
-          >
+          <span class="err-msg" id="confirm-err" v-show="!$v.confirmPassword.sameAs">
+            Passwords do not match
+          </span>
 
           <div>
             <button type="submit">Create Account</button>
@@ -68,11 +63,9 @@ export default {
       user: {
         username: '',
         email: '',
-        password: {
-          password: '',
-          confirm: ''
-        }
+        password: ''
       },
+      confirmPassword: '',
       existingUsers: [],
       throwUsernameError: false,
       throwEmailError: false
@@ -83,15 +76,19 @@ export default {
       user: {
         username: { required, minLength: minLength(6), maxLength: maxLength(12) },
         email: { required, email },
-        password: {
-          password: { required, minLength: minLength(6) },
-          confirm: { required, sameAs: sameAs(this.user.password.password) }
-        }
-      }
+        password: { required, minLength: minLength(6) }
+      },
+      confirmPassword: { required, sameAs: sameAs(this.user.password) }
     }
   },
 
   methods: {
+    error(msg) {
+      alert(msg)
+    },
+    success(msg) {
+      alert(msg)
+    },
     async checkUsername() {
       if (this.user.username) {
         try {
@@ -110,7 +107,7 @@ export default {
             }
           })
         } catch (error) {
-          alert(error)
+          this.error(error)
         }
       }
     },
@@ -132,7 +129,7 @@ export default {
             }
           })
         } catch (error) {
-          alert(error)
+          this.error(error)
         }
       }
     },
@@ -178,7 +175,7 @@ export default {
             }
           })
       } else {
-        alert('Error: Please review your information')
+        this.error('Error: Please review your information')
       }
     }
   }

@@ -1,7 +1,8 @@
 <template>
   <div>
     <div id="register">
-      <form v-on:submit.prevent="register(user)">
+      <h1>Create Account</h1>
+      <form v-on:submit.prevent="register">
         <div id="fields">
           <label for="username">Username</label>
           <input
@@ -14,20 +15,18 @@
           <span class="err-msg" v-if="v$.user.username.$error">
             {{ v$.user.username.$errors[0].$message }}
           </span>
-          <span class="err-msg" id="username-err" v-if="throwUsernameError === true"
-            >USERNAME EXISTS</span
-          >
+          <span class="err-msg" v-if="throwUsernameError === true">USERNAME EXISTS</span>
 
           <label for="email">Email</label>
           <input type="text" id="email" placeholder="Email" v-model="user.email" />
           <span class="err-msg" v-if="v$.user.email.$error">
             {{ v$.user.email.$errors[0].$message }}
           </span>
-          <span class="err-msg" id="email-err" v-if="throwEmailError === true">EMAIL EXISTS</span>
+          <span class="err-msg" v-if="throwEmailError === true">EMAIL EXISTS</span>
 
           <label for="password">Password</label>
           <input type="password" id="password" placeholder="Password" v-model="user.password" />
-          <span class="err-msg" id="password-err" v-if="v$.user.password.$error">
+          <span class="err-msg" v-if="v$.user.password.$error">
             {{ v$.user.password.$errors[0].$message }}</span
           >
 
@@ -38,9 +37,7 @@
             placeholder="Confirm Password"
             v-model="confirmPassword"
           />
-          <span class="err-msg" id="confirm-err" v-show="!$v.confirmPassword.sameAs">
-            Passwords do not match
-          </span>
+          <span class="err-msg" v-if="v$.confirmPassword.$error"> passwords do not match</span>
 
           <div>
             <button type="submit">Create Account</button>
@@ -55,7 +52,7 @@
 import authService from '@/services/AuthService'
 import UserService from '@/services/users'
 import useValidate from '@vuelidate/core'
-import { required, email, minLength, maxLength, sameAs } from '@vuelidate/validators'
+import { required, email, minLength, sameAs } from '@vuelidate/validators'
 export default {
   data() {
     return {
@@ -74,14 +71,13 @@ export default {
   validations() {
     return {
       user: {
-        username: { required, minLength: minLength(6), maxLength: maxLength(12) },
+        username: { required, minLength: minLength(3) },
         email: { required, email },
         password: { required, minLength: minLength(6) }
       },
       confirmPassword: { required, sameAs: sameAs(this.user.password) }
     }
   },
-
   methods: {
     error(msg) {
       alert(msg)
@@ -190,7 +186,6 @@ form {
   border-radius: 0.375rem;
   background-color: #ffffff;
 }
-
 #fields {
   display: flex;
   flex-direction: column;
@@ -198,7 +193,6 @@ form {
   justify-content: center;
   height: 100%;
 }
-
 .err-msg {
   color: red;
 }

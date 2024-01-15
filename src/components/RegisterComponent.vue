@@ -5,74 +5,87 @@
       <form>
         <div id="fields">
           <!-- Username -->
-          <span class="p-float-label">
-            <InputText
-              id="username"
-              v-model="user.username"
-              :class="{ 'p-invalid': v$.user.username.$error }"
-            />
-            <label for="username">Username</label>
-          </span>
-          <span
-            class="err-msg"
-            v-if="v$.user.username.$errors && v$.user.username.$errors.length > 0"
-          >
-            {{ v$.user.username.$errors[0].$message }}
-          </span>
+          <div id="username-input">
+            <span class="p-float-label">
+              <InputText
+                id="username"
+                v-model="user.username"
+                :class="{ 'p-invalid': v$.user.username.$error || throwUsernameError === true }"
+              />
+              <label for="username">Username</label>
+            </span>
+            <span
+              class="err-msg"
+              v-if="v$.user.username.$errors && v$.user.username.$errors.length > 0"
+            >
+              {{ v$.user.username.$errors[0].$message }}
+            </span>
+          </div>
 
           <!-- Email -->
-          <span class="p-float-label">
-            <InputText
-              id="email"
-              v-model="user.email"
-              :class="{ 'p-invalid': v$.user.email.$error }"
-            />
-            <label for="email">Email</label>
-          </span>
-          <span class="err-msg" v-if="v$.user.email.$error">
-            {{ v$.user.email.$errors[0].$message }}
-          </span>
+          <div id="email-input">
+            <span class="p-float-label">
+              <InputText
+                id="email"
+                v-model="user.email"
+                :class="{ 'p-invalid': v$.user.email.$error || throwEmailError === true }"
+              />
+              <label for="email">Email</label>
+            </span>
+            <span class="err-msg" v-if="v$.user.email.$error">
+              {{ v$.user.email.$errors[0].$message }}
+            </span>
+          </div>
 
           <!-- Password -->
-          <span class="p-float-label">
-            <Password
-              v-model="user.password"
-              id="password"
-              toggleMask
-              :class="{ 'p-invalid': v$.user.password.$error }"
-            >
-              <label for="password">Password</label>
+          <div id="password-input">
+            <span class="p-float-label">
+              <Password
+                v-model="user.password"
+                id="password"
+                toggleMask
+                :class="{ 'p-invalid': v$.user.password.$error || !passwordsMatch() }"
+              >
+                <label for="password">Password</label>
 
-              <template #footer>
-                <Divider />
-                <p class="mt-2">Suggestions</p>
-                <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
-                  <li>At least one lowercase</li>
-                  <li>At least one uppercase</li>
-                  <li>At least one numeric</li>
-                  <li>Minimum 6 characters</li>
-                </ul>
-              </template>
-            </Password>
-          </span>
-          <span class="err-msg" id="password-err" v-if="v$.user.password.$error">
-            {{ v$.user.password.$errors[0].$message }}</span
-          >
+                <template #footer>
+                  <Divider />
+                  <p class="mt-2">Suggestions</p>
+                  <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                    <li>At least one lowercase</li>
+                    <li>At least one uppercase</li>
+                    <li>At least one numeric</li>
+                    <li>Minimum 6 characters</li>
+                  </ul>
+                </template>
+              </Password>
+            </span>
+            <span
+              class="err-msg"
+              id="password-err"
+              v-if="v$.user.password.$error || v$.user.password.length < 3"
+            >
+              {{ v$.user.password.$errors[0].$message }}</span
+            >
+          </div>
 
           <!-- Confirm Password -->
-          <span class="p-float-label">
-            <Password
-              v-model="confirmPassword"
-              :feedback="false"
-              :class="{ 'p-invalid': v$.confirmPassword.$error }"
-            />
-            <label for="confirmPassword">Confirm password</label>
-          </span>
-          <span class="err-msg" id="confirmPassword-err" v-if="v$.confirmPassword.$error">
-            Passwords do not match</span
-          >
+          <div id="confirmPassword-input">
+            <span class="p-float-label">
+              <Password
+                v-model="confirmPassword"
+                :feedback="false"
+                :class="{ 'p-invalid': v$.confirmPassword.$error || !passwordsMatch() }"
+              />
+              <label for="confirmPassword">Confirm password</label>
+            </span>
+            <span class="err-msg" id="confirmPassword-err" v-if="!passwordsMatch()">
+              Passwords do not match</span
+            >
+          </div>
 
-          <div>
+          <!-- register button -->
+          <div id="register-btn">
             <PrimeButton
               label="Create Account"
               icon="pi pi-check"
@@ -98,6 +111,7 @@ import Divider from 'primevue/divider'
 import UserService from '@/services/users'
 import useValidate from '@vuelidate/core'
 import { required, email, minLength, sameAs } from '@vuelidate/validators'
+
 export default {
   data() {
     return {
@@ -109,9 +123,7 @@ export default {
       confirmPassword: '',
       existingUsers: [],
       throwUsernameError: false,
-      usernameError: '',
-      throwEmailError: false,
-      emailError: ''
+      throwEmailError: false
     }
   },
   components: {
@@ -143,6 +155,9 @@ export default {
     }
   },
   methods: {
+    passwordsMatch() {
+      return this.user.password === this.confirmPassword
+    },
     async checkUsername() {
       if (this.user.username) {
         try {
@@ -159,6 +174,7 @@ export default {
                 detail: 'Please choose a different username',
                 life: 5000
               })
+              this.throwUsernameError = true
               return false
             } else {
               this.throwUsernameError = false
@@ -191,6 +207,7 @@ export default {
                 detail: 'Please choose a different email',
                 life: 5000
               })
+              this.throwEmailError = true
               return false
             } else {
               this.throwEmailError = false
@@ -216,7 +233,8 @@ export default {
         !this.v$.$pending &&
         !this.v$.$error &&
         !this.throwUsernameError &&
-        !this.throwEmailError
+        !this.throwEmailError &&
+        this.passwordsMatch()
       ) {
         this.v$.$validate()
 
@@ -258,7 +276,6 @@ export default {
             }
           })
       } else {
-        //this.error('Error: Please review your information')
         this.$toast.add({
           severity: 'error',
           summary: 'ERROR',
@@ -272,13 +289,17 @@ export default {
 </script>
 <style scoped>
 form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid;
   border-radius: 0.375rem;
   background-color: #b6afaf;
-  height: 100vh;
+  height: 60vh;
+  width: 60vw;
+}
+#register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #fields {
   display: flex;

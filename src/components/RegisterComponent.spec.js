@@ -5,7 +5,7 @@ import RegisterComponent from '../components/RegisterComponent.vue'
 describe('RegisterComponent', () => {
   const wrapper = mount(RegisterComponent)
 
-  it('displays form correctly', () => {
+  it('displays inputs correctly', () => {
     const usernameInput = wrapper.vm.$el.querySelector('input#username')
     const emailInput = wrapper.vm.$el.querySelector('input#email')
     const passwordInput = wrapper.vm.$el.querySelector('input#password')
@@ -42,13 +42,18 @@ describe('RegisterComponent', () => {
     await wrapper.find('form').trigger('submit.prevent')
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.vm.v$.user.username.$error).toBeTruthy()
+    const usernameError = wrapper.vm.v$.user.username.$error
+    const emailError = wrapper.vm.v$.user.email.$error
+    const passwordError = wrapper.vm.v$.user.password.$error
+    const confirmError = wrapper.vm.v$.confirmPassword.$error
 
-    expect(wrapper.vm.v$.user.email.$error).toBeTruthy()
+    expect(usernameError).toBeTruthy()
 
-    expect(wrapper.vm.v$.user.password.$error).toBeTruthy()
+    expect(emailError).toBeTruthy()
 
-    expect(wrapper.vm.v$.confirmPassword.$error).toBeTruthy()
+    expect(passwordError).toBeTruthy()
+
+    expect(confirmError).toBeTruthy()
   })
 
   // it('Displays validation error messages with invalid input', async () => {

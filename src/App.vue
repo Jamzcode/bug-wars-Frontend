@@ -4,7 +4,6 @@
       <nav>
         <RouterLink to="/">Home | </RouterLink>
         <RouterLink to="/login">Login | </RouterLink>
-        <RouterLink to="/users">Users</RouterLink> |
         <RouterLink to="/register">Register</RouterLink>
       </nav>
     </div>

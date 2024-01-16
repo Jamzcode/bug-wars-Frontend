@@ -11,7 +11,6 @@
     "test:unit:coverage": "vitest --coverage",
     "test:e2e": "cypress run --e2e",
     "test:e2e:dev": "cypress open --e2e",
-    "build-only": "vite build",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
@@ -20,6 +19,7 @@
     "@vuelidate/validators": "^2.0.4",
     "axios": "^1.6.2",
     "pinia": "^2.1.7",
+    "primevue": "^3.46.0",
     "vue": "^3.3.12",
     "vue-router": "^4.2.5"
   },

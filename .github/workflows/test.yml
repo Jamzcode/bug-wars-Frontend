@@ -26,7 +26,6 @@ jobs:
       - name: 'Make Sure It Builds'
         run: npm run build
       - name: 'Run Tests'
-
         run: npm run test:unit:coverage
       - name: 'Report Coverage'
         if: always() # Also generate the report if tests are failing

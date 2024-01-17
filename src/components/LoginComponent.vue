@@ -59,6 +59,11 @@ export default {
             console.log("Incorrect username or password.")
 
           }
+          setTimeout(() => {
+              this.$router.push({
+                path: '/'
+              })
+            }, 5000)
         })
         .catch((error) => {
           const response = error.response

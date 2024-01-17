@@ -3,11 +3,11 @@
     <h2>Login</h2>
     <form id="login-form">
       <div class="user-box">
-        <input type="text" name="" required="" v-model="username" id="username" />
+        <input type="text" name="" required="" v-model="user.username" id="username" />
         <label>Username</label>
       </div>
       <div class="user-box">
-        <input type="password" name="" required="" v-model="password" id="password" />
+        <input type="password" name="" required="" v-model="user.password" id="password" />
         <label>Password</label>
       </div>
       <a href="#" v-on:click="login">
@@ -43,18 +43,21 @@ export default {
     }
   },
   methods: {
-    login() {
-      console.log(this.username, this.password)
+    async login() {
       authService
         .login(this.user)
         .then((response) => {
+          console.log(this.user)
           if (response.status === 200) {
-            this.$toast.add({
-              severity: 'success',
-              summary: 'login successful',
-              detail: 'You are logged in. Redirecting to homepage.',
-              life: 5000
-            })
+
+            //Confirm user was logged in
+            console.log("You did it!!")
+
+          } else if(response.status === 401) {
+
+            //Let user know username/password is incorrect
+            console.log("Incorrect username or password.")
+
           }
         })
         .catch((error) => {

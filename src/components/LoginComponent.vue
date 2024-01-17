@@ -10,13 +10,9 @@
         <input type="password" name="" required="" v-model="user.password" id="password" />
         <label>Password</label>
       </div>
-      <a href="#" v-on:click="login">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Submit
-      </a>
+
+      <div><PrimeButton id="prime-button" label="Login" v-on:click="login" /></div>
+    
     </form>
   </div>
   <!-- <div>
@@ -29,10 +25,13 @@
       <button type="submit" id="login-button">Login</button>
     </div>
   </div> -->
+  <Toast />
 </template>
 
 <script>
 import authService from '@/services/AuthService'
+import Toast from 'primevue/toast'
+import PrimeButton from 'primevue/button'
 export default {
   data() {
     return {
@@ -49,21 +48,20 @@ export default {
         .then((response) => {
           console.log(this.user)
           if (response.status === 200) {
-
+            this.$toast.add({
+              severity: 'success',
+              summary: 'Login successful',
+              detail: 'Login successful! Redirecting...',
+              life: 5000
+            })
             //Confirm user was logged in
-            console.log("You did it!!")
-
-          } else if(response.status === 401) {
-
-            //Let user know username/password is incorrect
-            console.log("Incorrect username or password.")
-
+            console.log('You did it!!')
           }
           setTimeout(() => {
-              this.$router.push({
-                path: '/'
-              })
-            }, 5000)
+            this.$router.push({
+              path: '/'
+            })
+          }, 5000)
         })
         .catch((error) => {
           const response = error.response
@@ -84,7 +82,7 @@ export default {
             console.log(response.data.message)
           }
         })
-    } 
+    }
   }
 }
 </script>
@@ -274,5 +272,9 @@ body {
   100% {
     bottom: 100%;
   }
+}
+
+#prime-button{
+  border: solid red 3px;
 }
 </style>

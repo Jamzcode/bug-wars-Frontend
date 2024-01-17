@@ -275,6 +275,7 @@ body {
 }
 
 #prime-button{
+  width: 200px;
   border: solid red 3px;
 }
 </style>

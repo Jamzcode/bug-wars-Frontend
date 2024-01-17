@@ -41,6 +41,10 @@ export default {
       }
     }
   },
+  components: {
+    Toast,
+    PrimeButton,
+  },
   methods: {
     async login() {
       authService

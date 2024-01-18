@@ -42,18 +42,11 @@ export default {
   },
   components: {
     Toast,
-    PrimeButton,
+    PrimeButton
   },
 
-
-
-
   methods: {
-
-
     async login() {
-     
-     
       authService
         .login(this.user)
         .then((response) => {
@@ -70,30 +63,25 @@ export default {
           }
           setTimeout(() => {
             this.$router.push({
-              path: '/'
+              path: '/lobby'
             })
           }, 5000)
         })
         .catch((error) => {
           const response = error.response
-          if(response.status === 401)
-          {
+          if (response.status === 401) {
             this.$toast.add({
               severity: 'error',
               summary: 'ERROR',
-              detail: 'Invalid username or password.'
+              detail: 'Invalid username or password.',
+              life: 5000
             })
-            console.log("Invalid username or password.")
+            console.log('Invalid username or password.')
           }
         })
-      }
-    
-    
     }
-  
-  
   }
-
+}
 </script>
 
 <style>

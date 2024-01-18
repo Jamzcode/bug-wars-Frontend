@@ -12,7 +12,6 @@
       </div>
 
       <div><PrimeButton id="prime-button" label="Login" v-on:click="login" /></div>
-    
     </form>
   </div>
   <!-- <div>
@@ -45,12 +44,20 @@ export default {
     Toast,
     PrimeButton,
   },
+
+
+
+
   methods: {
+
+
     async login() {
+     
+     
       authService
         .login(this.user)
         .then((response) => {
-          console.log(this.user)
+          // console.log(this.user)
           if (response.status === 200) {
             this.$toast.add({
               severity: 'success',
@@ -59,7 +66,7 @@ export default {
               life: 5000
             })
             //Confirm user was logged in
-            console.log('You did it!!')
+            // console.log('You did it!!')
           }
           setTimeout(() => {
             this.$router.push({
@@ -69,26 +76,24 @@ export default {
         })
         .catch((error) => {
           const response = error.response
-          if (!response) {
-            console.log('catch error')
-          } else if (response.status === 400) {
-            if (response.data.errors) {
-              // Show the validation errors
-              let msg = 'Validation error: '
-              for (let err of response.data.errors) {
-                msg += `'${err.field}':${err.defaultMessage}. `
-              }
-              console.log(msg)
-            } else {
-              console.log(response.data.message)
-            }
-          } else {
-            console.log(response.data.message)
+          if(response.status === 401)
+          {
+            this.$toast.add({
+              severity: 'error',
+              summary: 'ERROR',
+              detail: 'Invalid username or password.'
+            })
+            console.log("Invalid username or password.")
           }
         })
+      }
+    
+    
     }
+  
+  
   }
-}
+
 </script>
 
 <style>
@@ -278,8 +283,6 @@ body {
   }
 }
 
-#prime-button{
-  width: 200px;
-  border: solid red 3px;
+#prime-button {
 }
 </style>

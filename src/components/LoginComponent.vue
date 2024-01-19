@@ -1,39 +1,46 @@
 <template>
-  <div class="login-box">
-    <h2>Login</h2>
-    <h6 class="register-msg">
-      Need an account? <RouterLink to="/register">Register here</RouterLink>
-    </h6>
-    <form id="login-form" @submit.prevent="register">
-      <!-- Username -->
-      <div class="user-box">
-        <span class="p-float-label">
-          <InputText type="text" name="" required="" v-model="user.username" id="username" />
-          <label for="username">Username</label>
-        </span>
-      </div>
+  <Transition appear>
+    <div class="login-box">
+      <form id="login-form" @submit.prevent="register">
+        <div id="fields">
+          <div class="header-text">
+            <h2>Login</h2>
+            <h6 class="register-msg">
+              Need an account?
+              <RouterLink to="/register">Register here</RouterLink>
+            </h6>
+          </div>
+          <!-- Username -->
+          <div class="user-box">
+            <span class="p-float-label">
+              <InputText type="text" name="" required="" v-model="user.username" id="username" />
+              <label for="username">Username</label>
+            </span>
+          </div>
 
-      <!-- Password -->
-      <div class="user-box">
-        <span class="p-float-label">
-          <Password
-            type="password"
-            name=""
-            required=""
-            v-model="user.password"
-            id="password"
-            toggleMask
-            :feedback="false"
-          />
-          <label for="password">Password</label>
-        </span>
-      </div>
+          <!-- Password -->
+          <div class="user-box">
+            <span class="p-float-label">
+              <Password
+                type="password"
+                name=""
+                required=""
+                v-model="user.password"
+                id="password"
+                toggleMask
+                :feedback="false"
+              />
+              <label for="password">Password</label>
+            </span>
+          </div>
 
-      <!-- Login button -->
-      <div id="login-btn"><PrimeButton id="prime-button" label="Login" type="submit" /></div>
-    </form>
-  </div>
-  <!-- <div>
+          <!-- Login button -->
+          <div id="login-btn"><PrimeButton id="prime-button" label="Login" type="submit" /></div>
+        </div>
+      </form>
+      <Toast />
+    </div>
+    <!-- <div>
     <div class="login">
       <div class="welcome-banner">Welcome Back</div>
 
@@ -43,7 +50,7 @@
       <button type="submit" id="login-button">Login</button>
     </div>
   </div> -->
-  <Toast />
+  </Transition>
 </template>
 
 <script>
@@ -132,8 +139,19 @@ body {
   background: linear-gradient(#141e30, #243b55);
 }
 
+#fields {
+  width: 400px;
+  padding: 40px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 .login-box {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   width: 400px;
@@ -142,13 +160,18 @@ body {
   background: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
+  border-radius: 10px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.login-box h2 {
-  margin: 0 0 30px;
+h2 h6 {
+  margin: 0;
   padding: 0;
   color: #fff;
+  text-align: center;
 }
 
 .login-box .user-box {
@@ -166,6 +189,19 @@ body {
   justify-content: center;
 }
 
+.v-enter-active,
+.v-leave-active {
+  transition:
+    opacity 2s ease,
+    transform 1s ease-in-out;
+  transform: translateY(0px);
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(100px);
+}
 /* .login-box .user-box {
 
 } */

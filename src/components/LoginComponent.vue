@@ -1,7 +1,7 @@
 <template>
   <div class="login-box">
     <h2>Login</h2>
-    <form id="login-form">
+    <form id="login-form" @submit.prevent="register">
       <!-- Username -->
       <div class="user-box">
         <span class="p-float-label">
@@ -27,7 +27,7 @@
       </div>
 
       <!-- Login button -->
-      <div><PrimeButton id="prime-button" label="Login" v-on:click="login" /></div>
+      <div><PrimeButton id="prime-button" label="Login" type="submit" /></div>
     </form>
   </div>
   <!-- <div>

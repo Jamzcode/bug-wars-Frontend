@@ -1,7 +1,7 @@
 <template>
   <body>
     <div id="register">
-      <form>
+      <form @submit.prevent="register">
         <div id="fields">
           <h2>Create Account</h2>
 
@@ -91,12 +91,7 @@
 
           <!-- register button -->
           <div id="register-btn">
-            <PrimeButton
-              label="Create Account"
-              icon="pi pi-check"
-              iconPos="right"
-              @click="register"
-            />
+            <PrimeButton label="Create Account" icon="pi pi-check" iconPos="right" type="submit" />
           </div>
         </div>
       </form>

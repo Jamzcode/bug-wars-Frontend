@@ -1,6 +1,9 @@
 <template>
   <div class="login-box">
     <h2>Login</h2>
+    <h6 class="register-msg">
+      Need an account? <RouterLink to="/register">Register here</RouterLink>
+    </h6>
     <form id="login-form" @submit.prevent="register">
       <!-- Username -->
       <div class="user-box">
@@ -27,7 +30,7 @@
       </div>
 
       <!-- Login button -->
-      <div><PrimeButton id="prime-button" label="Login" type="submit" /></div>
+      <div id="login-btn"><PrimeButton id="prime-button" label="Login" type="submit" /></div>
     </form>
   </div>
   <!-- <div>
@@ -146,7 +149,6 @@ body {
   margin: 0 0 30px;
   padding: 0;
   color: #fff;
-  text-align: center;
 }
 
 .login-box .user-box {
@@ -155,6 +157,13 @@ body {
   padding: 15px;
   font-size: 16px;
   color: #fff;
+}
+
+#login-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* .login-box .user-box {

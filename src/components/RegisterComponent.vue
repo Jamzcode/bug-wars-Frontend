@@ -3,7 +3,13 @@
     <div id="register">
       <form @submit.prevent="register">
         <div id="fields">
-          <h2>Create Account</h2>
+          <div class="header-txt">
+            <h2>Create Account</h2>
+            <h6 class="login-msg">
+              Already have an account?
+              <RouterLink to="/login">Login here</RouterLink>
+            </h6>
+          </div>
 
           <!-- Username -->
           <div class="input-container" id="username-input">
@@ -50,8 +56,6 @@
                 toggleMask
                 :class="{ 'p-invalid': v$.user.password.$error || !passwordsMatch() }"
               >
-                <label for="password">Password</label>
-
                 <template #footer>
                   <Divider />
                   <p class="mt-2">Suggestions</p>
@@ -63,6 +67,7 @@
                   </ul>
                 </template>
               </Password>
+              <label for="password">Password</label>
             </span>
             <span
               class="err-msg"
@@ -292,6 +297,7 @@ body {
   font-family: sans-serif;
   background: linear-gradient(#141e30, #243b55);
 }
+
 #register {
   display: flex;
   justify-content: center;
@@ -303,12 +309,13 @@ body {
   align-items: center;
   justify-content: center;
 }
-h2 {
-  margin: 0 0 30px;
+h2 h6 {
+  margin: 0;
   padding: 0;
   color: #fff;
   text-align: center;
 }
+
 #fields {
   width: 400px;
   padding: 40px;
@@ -330,5 +337,12 @@ h2 {
 }
 .user-input {
   width: 100%;
+}
+
+#register-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <body>
     <div id="register">
-      <h1>Create Account</h1>
       <form>
         <div id="fields">
+          <h2>Create Account</h2>
+
           <!-- Username -->
-          <div id="username-input">
+          <div class="input-container" id="username-input">
             <span class="p-float-label">
               <InputText
+                class="user-input"
                 id="username"
                 v-model="user.username"
                 :class="{ 'p-invalid': v$.user.username.$error || throwUsernameError === true }"
@@ -23,9 +25,10 @@
           </div>
 
           <!-- Email -->
-          <div id="email-input">
+          <div class="input-container" id="email-input">
             <span class="p-float-label">
               <InputText
+                class="user-input"
                 id="email"
                 v-model="user.email"
                 :class="{ 'p-invalid': v$.user.email.$error || throwEmailError === true }"
@@ -38,9 +41,10 @@
           </div>
 
           <!-- Password -->
-          <div id="password-input">
+          <div class="input-container" id="password-input">
             <span class="p-float-label">
               <Password
+                class="user-input"
                 v-model="user.password"
                 id="password"
                 toggleMask
@@ -70,9 +74,10 @@
           </div>
 
           <!-- Confirm Password -->
-          <div id="confirmPassword-input">
+          <div class="input-container" id="confirmPassword-input">
             <span class="p-float-label">
               <Password
+                class="user-input"
                 v-model="confirmPassword"
                 :feedback="false"
                 :class="{ 'p-invalid': v$.confirmPassword.$error || !passwordsMatch() }"
@@ -94,12 +99,10 @@
             />
           </div>
         </div>
-
-        <hr />
       </form>
       <Toast />
     </div>
-  </div>
+  </body>
 </template>
 <script>
 import authService from '@/services/AuthService'
@@ -288,27 +291,49 @@ export default {
 }
 </script>
 <style scoped>
-form {
-  border: 1px solid;
-  border-radius: 0.375rem;
-  background-color: #b6afaf;
-  height: 60vh;
-  width: 60vw;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(#141e30, #243b55);
 }
 #register {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.header-text {
+  display: flex;
   align-items: center;
   justify-content: center;
 }
+h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
 #fields {
+  width: 400px;
+  padding: 40px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 80%;
+  align-items: flex-start;
+  justify-content: space-between;
 }
+
 .err-msg {
   color: red;
+}
+
+.input-container {
+  padding: 15px;
+}
+.user-input {
+  width: 100%;
 }
 </style>

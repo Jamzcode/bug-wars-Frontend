@@ -2,7 +2,9 @@
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/"> Home </RouterLink>
+        <RouterLink to="/"> Home |</RouterLink>
+        <RouterLink to="/login"> Login |</RouterLink>
+        <RouterLink to="/register"> Register </RouterLink>
       </nav>
     </div>
   </header>
@@ -14,4 +16,4 @@
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
-<style></style>
+<style scoped></style>

@@ -1,105 +1,115 @@
 <template>
-  <div>
-    <div id="register">
-      <h1>Create Account</h1>
-      <form>
-        <div id="fields">
-          <!-- Username -->
-          <div id="username-input">
-            <span class="p-float-label">
-              <InputText
-                id="username"
-                v-model="user.username"
-                :class="{ 'p-invalid': v$.user.username.$error || throwUsernameError === true }"
-              />
-              <label for="username">Username</label>
-            </span>
-            <span
-              class="err-msg"
-              v-if="v$.user.username.$errors && v$.user.username.$errors.length > 0"
-            >
-              {{ v$.user.username.$errors[0].$message }}
-            </span>
-          </div>
+  <Transition appear>
+    <body>
+      <div id="register">
+        <form @submit.prevent="register">
+          <div id="fields">
+            <div class="header-txt">
+              <h2>Create Account</h2>
+              <h6 class="login-msg">
+                Already have an account?
+                <RouterLink to="/login">Login here</RouterLink>
+              </h6>
+            </div>
 
-          <!-- Email -->
-          <div id="email-input">
-            <span class="p-float-label">
-              <InputText
-                id="email"
-                v-model="user.email"
-                :class="{ 'p-invalid': v$.user.email.$error || throwEmailError === true }"
-              />
-              <label for="email">Email</label>
-            </span>
-            <span class="err-msg" v-if="v$.user.email.$error">
-              {{ v$.user.email.$errors[0].$message }}
-            </span>
-          </div>
-
-          <!-- Password -->
-          <div id="password-input">
-            <span class="p-float-label">
-              <Password
-                v-model="user.password"
-                id="password"
-                toggleMask
-                :class="{ 'p-invalid': v$.user.password.$error || !passwordsMatch() }"
+            <!-- Username -->
+            <div class="input-container" id="username-input">
+              <span class="p-float-label">
+                <InputText
+                  class="user-input"
+                  id="username"
+                  v-model="user.username"
+                  :class="{ 'p-invalid': v$.user.username.$error || throwUsernameError === true }"
+                />
+                <label for="username">Username</label>
+              </span>
+              <span
+                class="err-msg"
+                v-if="v$.user.username.$errors && v$.user.username.$errors.length > 0"
               >
+                {{ v$.user.username.$errors[0].$message }}
+              </span>
+            </div>
+
+            <!-- Email -->
+            <div class="input-container" id="email-input">
+              <span class="p-float-label">
+                <InputText
+                  class="user-input"
+                  id="email"
+                  v-model="user.email"
+                  :class="{ 'p-invalid': v$.user.email.$error || throwEmailError === true }"
+                />
+                <label for="email">Email</label>
+              </span>
+              <span class="err-msg" v-if="v$.user.email.$error">
+                {{ v$.user.email.$errors[0].$message }}
+              </span>
+            </div>
+
+            <!-- Password -->
+            <div class="input-container" id="password-input">
+              <span class="p-float-label">
+                <Password
+                  class="user-input"
+                  v-model="user.password"
+                  id="password"
+                  toggleMask
+                  :class="{ 'p-invalid': v$.user.password.$error || !passwordsMatch() }"
+                >
+                  <template #footer>
+                    <Divider />
+                    <p class="mt-2">Suggestions</p>
+                    <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                      <li>At least one lowercase</li>
+                      <li>At least one uppercase</li>
+                      <li>At least one numeric</li>
+                      <li>Minimum 6 characters</li>
+                    </ul>
+                  </template>
+                </Password>
                 <label for="password">Password</label>
+              </span>
+              <span
+                class="err-msg"
+                id="password-err"
+                v-if="v$.user.password.$error || v$.user.password.length < 3"
+              >
+                {{ v$.user.password.$errors[0].$message }}</span
+              >
+            </div>
 
-                <template #footer>
-                  <Divider />
-                  <p class="mt-2">Suggestions</p>
-                  <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
-                    <li>At least one lowercase</li>
-                    <li>At least one uppercase</li>
-                    <li>At least one numeric</li>
-                    <li>Minimum 6 characters</li>
-                  </ul>
-                </template>
-              </Password>
-            </span>
-            <span
-              class="err-msg"
-              id="password-err"
-              v-if="v$.user.password.$error || v$.user.password.length < 3"
-            >
-              {{ v$.user.password.$errors[0].$message }}</span
-            >
-          </div>
+            <!-- Confirm Password -->
+            <div class="input-container" id="confirmPassword-input">
+              <span class="p-float-label">
+                <Password
+                  class="user-input"
+                  v-model="confirmPassword"
+                  :feedback="false"
+                  :class="{ 'p-invalid': v$.confirmPassword.$error || !passwordsMatch() }"
+                />
+                <label for="confirmPassword">Confirm password</label>
+              </span>
+              <span class="err-msg" id="confirmPassword-err" v-if="!passwordsMatch()">
+                Passwords do not match</span
+              >
+            </div>
 
-          <!-- Confirm Password -->
-          <div id="confirmPassword-input">
-            <span class="p-float-label">
-              <Password
-                v-model="confirmPassword"
-                :feedback="false"
-                :class="{ 'p-invalid': v$.confirmPassword.$error || !passwordsMatch() }"
+            <!-- register button -->
+            <div id="register-btn">
+              <PrimeButton
+                label="Create Account"
+                icon="pi pi-check"
+                iconPos="right"
+                type="submit"
               />
-              <label for="confirmPassword">Confirm password</label>
-            </span>
-            <span class="err-msg" id="confirmPassword-err" v-if="!passwordsMatch()">
-              Passwords do not match</span
-            >
+            </div>
           </div>
-
-          <!-- register button -->
-          <div id="register-btn">
-            <PrimeButton
-              label="Create Account"
-              icon="pi pi-check"
-              iconPos="right"
-              @click="register"
-            />
-          </div>
-        </div>
-
-        <hr />
-      </form>
-      <Toast />
-    </div>
-  </div>
+        </form>
+        <Toast />
+      </div>
+    </body>
+  </Transition>
 </template>
 <script>
 import authService from '@/services/AuthService'
@@ -288,27 +298,68 @@ export default {
 }
 </script>
 <style scoped>
-form {
-  border: 1px solid;
-  border-radius: 0.375rem;
-  background-color: #b6afaf;
-  height: 60vh;
-  width: 60vw;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(#141e30, #243b55);
 }
+
 #register {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h2 h6 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+#fields {
+  width: 400px;
+  padding: 40px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.err-msg {
+  color: red;
+}
+
+.input-container {
+  padding: 15px;
+}
+.user-input {
+  width: 100%;
+}
+
+#register-btn {
+  width: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
-#fields {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 80%;
+
+.v-enter-active,
+.v-leave-active {
+  transition:
+    opacity 2s ease,
+    transform 1s ease-in-out;
+  transform: translateY(0px);
 }
-.err-msg {
-  color: red;
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(100px);
 }
 </style>

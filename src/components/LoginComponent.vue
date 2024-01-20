@@ -1,7 +1,7 @@
 <template>
   <Transition appear>
     <div class="login-box">
-      <form id="login-form" @submit.prevent="register">
+      <form id="login-form" @submit.prevent="login">
         <div id="fields">
           <div class="header-text">
             <h2>Login</h2>

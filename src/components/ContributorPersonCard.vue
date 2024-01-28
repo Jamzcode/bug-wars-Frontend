@@ -6,11 +6,16 @@
         <div class="linkedin">{{contributor.linkedin}}</div>
         <div class="git">{{contributor.gitpage}}</div>
         <div class="bio">{{contributor.bio}}</div>
+        <div class="picture">
+            <!-- this is currently drawing from public image, need to put in data-->
+            <img src= '/funny_batman_profile.jpg' />
+        </div>
     </section>
 </template>
 
 <script>
 /*import { defineComponent } from '@vue/composition-api'*/
+import image from '../assets/funny_batman_profile.jpg'
 
 export default /*defineComponent*/ {
     data() {
@@ -22,7 +27,7 @@ export default /*defineComponent*/ {
                 linkedin: 'fakelinkedin.com',
                 gitpage: 'fakegitpage.com',
                 bio: 'lorem ipsum',
-                picture: 'blank',
+                picture: image,
 
 
             }
@@ -44,5 +49,11 @@ export default /*defineComponent*/ {
     color: blue;
 }
 
+.picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: red;
+}
 </style>
 

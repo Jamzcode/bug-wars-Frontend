@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import CreditPersonCard from '../components/CreditPersonCard.vue';
+    import CreditPersonCard from '../components/ContributorPersonCard.vue';
     export default {
         components: {CreditPersonCard}
     }

@@ -1,13 +1,16 @@
 <template>
-    <div>Credits Page</div>
+    <h1>Credits Page</h1>
+    <div>
+        <CreditPersonCard/>
+    </div>
 </template>
 
 <script>
+    import CreditPersonCard from '../components/CreditPersonCard.vue';
+    export default {
+        components: {CreditPersonCard}
+    }
 
-export default {
-components: {}
-     
-}
 </script>
 
 <style scoped>

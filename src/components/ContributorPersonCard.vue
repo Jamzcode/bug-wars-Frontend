@@ -1,14 +1,13 @@
 <template>
     <section id="contributor-card">
         <div class="name">{{contributor.name}}</div>
-        <div class="city">{{contributor.city}}</div>
-        <div class="state">{{contributor.state}}</div>
+        <div class="location">{{contributor.location}}</div>
         <div class="linkedin">{{contributor.linkedin}}</div>
         <div class="git">{{contributor.gitpage}}</div>
         <div class="bio">{{contributor.bio}}</div>
-        <div class="picture">
+        <div>
             <!-- this is currently drawing from public image, need to put in data-->
-            <img src= '/funny_batman_profile.jpg' />
+            <img class="picture" src= '../assets/funny_batman_profile.jpg' />
         </div>
     </section>
 </template>
@@ -21,9 +20,8 @@ export default /*defineComponent*/ {
     data() {
         return {
             contributor: {
-                name: 'Batman',
-                city: 'Gotham',
-                state: 'New York',
+                name: 'Bruce Batman',
+                location: 'Gotham, NY',
                 linkedin: 'fakelinkedin.com',
                 gitpage: 'fakegitpage.com',
                 bio: 'lorem ipsum',
@@ -39,21 +37,63 @@ export default /*defineComponent*/ {
 <style scoped>
 #contributor-card {
     border-style: solid;
+    border-color: grey;
     margin: 10px;
     padding: px;
     display: grid;
-
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "name       .       picture"
+        "location   .       picture"
+        "linkedin   .       picture"
+        "git        .       picture"
+        "bio        .       .      "
 }
 
 .name {
-    color: blue;
+    grid-area: name;
+    font-family: Lucida Grande, Garamond, Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color: whitesmoke;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    height: 50px;
+
+    /*to delete*/
+    background:green
+    
+}
+
+.location {
+    grid-area: location;
+    /*to delete*/
+    background: red;
+
+}
+
+.linkedin {
+    grid-area: linkedin;
+}
+
+.git {
+    grid-area: git;
+}
+
+.bio {
+    grid-area: bio;
 }
 
 .picture {
-    width: 50px;
-    height: 50px;
+    grid-area: picture;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    background: red;
+    border-style: solid;
+    border-color: aqua;
+
+    /*to delete*/
+    background: white;
 }
 </style>
 

@@ -1,8 +1,12 @@
 <template>
-    <h1>Credits Page</h1>
-    <div>
-        <CreditPersonCard/>
-    </div>
+    <h1>Meet Our Designers</h1>
+    <section id="main">
+        <div class="contributor">
+            <CreditPersonCard/>
+            <CreditPersonCard/>
+            <CreditPersonCard/>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -14,5 +18,13 @@
 </script>
 
 <style scoped>
+h1 {
+    font-family: cursive;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+
+}
 
 </style>

@@ -3,8 +3,6 @@
     <section id="main">
         <div class="contributor">
             <CreditPersonCard/>
-            <CreditPersonCard/>
-            <CreditPersonCard/>
         </div>
     </section>
 </template>
@@ -19,7 +17,7 @@
 
 <style scoped>
 h1 {
-    font-family: cursive;
+    font-family: Lucida Grande;
     margin-left: auto;
     margin-right: auto;
     text-align: center;

@@ -1,31 +1,33 @@
 <template>
-  <div id="map-selector-container">
+  
     <div class="map-selector">
       
       
         <div class="map-selector-box">
         
-            <div id="left-arrow">
-          <button>
+            <div class="left-arrow">
+          <button id="left">
             <fa-fa icon="caret-left" />
           </button>
         </div>
 
-        <div id="map-window"></div>
+        <div id="map-window">
+          <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\map-image.jpg" alt="Bedbug">
+        </div>
 
-        <div id="right-arrow">
-          <button >
+        <div class="right-arrow">
+          <button id="right">
             <fa-fa icon="caret-right" />
           </button>
         </div>
 
-        <div id="level-name">[title]</div>
-        <div id="box-label">select map</div>
+        <div id="level-name">ARENA: Your back yard...</div>
+        <div id="box-label">WAR ZONE</div>
       </div>
     
     
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -33,6 +35,10 @@ export default {}
 </script>
 
 <style scoped>
+.map-selector{
+  display: flex;
+  justify-content: center;
+}
 
 .map-selector-box {
   display: grid;
@@ -49,7 +55,7 @@ export default {}
   border-radius: 30px;
   border-style: solid;
   border-color: #ffffff;
-  border-width: 1px;
+  border-width: 2px;
 
   justify-content: center;
 
@@ -70,8 +76,6 @@ export default {}
 }
 #map-window {
   grid-area: map-window;
-  background: #3e3b3b;
-  position: absolute;
   justify-self: center;
   align-self: center;
 
@@ -79,15 +83,34 @@ export default {}
   height: 310px;
 }
 
-#left-arrow {
+.left-arrow {
   grid-area: left-arrow;
   justify-self: center;
   align-self: center;
 }
-#right-arrow {
+
+#left{
+  color: chartreuse;
+  background-color: #e55300;
+}
+
+.right-arrow {
   grid-area: right-arrow;
   justify-self: center;
   align-self: center;
+}
+
+#right{
+  color: chartreuse;
+  background-color: #e55300;
+}
+
+#left:hover{
+  background: goldenrod;
+}
+
+#right:hover{
+  background: goldenrod;
 }
 
 #level-name {
@@ -101,4 +124,23 @@ export default {}
   position: absolute;
   width: auto;
 }
+
+img{
+  border: white dotted 1.5px;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition:
+    opacity 2s ease,
+    transform 1s ease-in-out;
+  transform: translateY(0px);
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
 </style>

@@ -2,6 +2,9 @@
   
     
     <div id="map-species-start">
+      <div id="image">
+        <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\bugwars-logo.png" alt="">
+      </div>
       <div id="map">
         <map-selector-component />
       </div>
@@ -13,8 +16,6 @@
       <div id="start-button">
         <start-button-component />
       </div>
-
-    
   </div>
 </template>
 
@@ -31,31 +32,40 @@ export default {
 #map-species-start {
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 2fr ;
   grid-template-rows: 1fr 1fr 1fr 1fr;
 
   grid-template-areas:
-  ". . . ."
-  ". map species ."
-  ". map species ."
-  ".  button button ."
+  ". image . "
+  ". map species "
+  ". map species "
+  ".  button . "
   ;
 }
 
 #map{
 grid-area: map;
+display: flex;
+justify-content: center;
+
 }
 
 #species{
 grid-area: species;
 justify-self: start;
-margin-left: 30px;
+margin-left: 10px;
 align-self: center;
 }
 
 #start-button{
 grid-area: button;
 justify-self: center;
+}
+
+#image{
+  display: flex;
+  justify-content: center;
+grid-area: image;
 }
 
 

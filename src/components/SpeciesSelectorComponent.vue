@@ -78,6 +78,9 @@ export default {}
   left: 12px;
   top: 81px;
 }
+.species-dropdown:hover{
+  border: solid white 2px;
+}
 
 .species-dropdown2 {
   background: rgba(60, 131, 141, 0.75);
@@ -90,6 +93,10 @@ export default {}
   position: absolute;
   left: 12px;
   top: 120px;
+}
+
+.species-dropdown2:hover{
+  border: solid white 2px;
 }
 
 .species-dropdown3 {
@@ -105,6 +112,10 @@ export default {}
   top: 159px;
 }
 
+.species-dropdown3:hover{
+  border: solid white 2px;
+}
+
 .species-dropdown4 {
   background: rgba(60, 131, 141, 0.75);
   border-radius: 5px;
@@ -116,5 +127,24 @@ export default {}
   position: absolute;
   left: 12px;
   top: 198px;
+}
+
+.species-dropdown4:hover{
+  border: solid white 2px;
+}
+
+
+.v-enter-active,
+.v-leave-active {
+  transition:
+    opacity 2s ease,
+    transform 1s ease-in-out;
+  transform: translateY(0px);
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(100px);
 }
 </style>

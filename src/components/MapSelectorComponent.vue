@@ -55,7 +55,7 @@ export default {}
   border-radius: 30px;
   border-style: solid;
   border-color: #ffffff;
-  border-width: 2px;
+  border-width: 1px;
 
   justify-content: center;
 
@@ -129,6 +129,11 @@ img{
   border: white dotted 1.5px;
 }
 
+img:hover{
+  border: white solid 2px;
+  width: 350;
+  height: 360px;
+}
 .v-enter-active,
 .v-leave-active {
   transition:

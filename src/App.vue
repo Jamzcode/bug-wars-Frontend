@@ -4,7 +4,8 @@
       <nav>
         <RouterLink to="/"> Home |</RouterLink>
         <RouterLink to="/login"> Login |</RouterLink>
-        <RouterLink to="/register"> Register </RouterLink>
+        <RouterLink to="/register"> Register | </RouterLink>
+        <RouterLink to="/credits">Credits</RouterLink>
       </nav>
     </div>
   </header>

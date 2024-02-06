@@ -1,9 +1,7 @@
 <template>
-  
-    
     <div id="map-species-start">
-      <div id="image">
-        <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\bugwars-logo.png" alt="">
+      <div id="image" >
+        <img id="logo" src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\bugwars-logo.png" alt="">
       </div>
       <div id="map">
         <map-selector-component />
@@ -28,7 +26,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #map-species-start {
   height: 100vh;
   display: grid;
@@ -66,6 +64,7 @@ justify-self: center;
   display: flex;
   justify-content: center;
 grid-area: image;
+
 }
 
 

@@ -1,6 +1,5 @@
 <template>
   
-  
   <div id="game-lobby-window">
     <game-lobby-component />
   </div>

@@ -3,10 +3,10 @@
     
     <section id="main">
         <div class="contributor" v-for="contributor in contributorStore.contributor" v-bind:key="contributor.id">
-            <CreditPersonCard :contributor="contributor"/>
+            <CreditPersonCard v-bind:contributor="contributor"/>
         </div>
     </section>
-    
+
 </template>
 
 <script>
@@ -32,12 +32,21 @@
 
 <style scoped>
 h1 {
-    font-family: Lucida Grande;
+    font-family: sans-serif;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-
-
 }
+
+#main {
+    display: flex;
+    align-items: center;
+}
+.contributor {
+    flex: 1 1 33.333%;
+    width: 100%;
+    padding: 25px;
+}
+
 
 </style>

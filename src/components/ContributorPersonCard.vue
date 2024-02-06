@@ -30,38 +30,32 @@ export default  {
 
 <style scoped>
 #contributor-card {
-    width: 850px;
-    height: 350px;
-    /*border-style: solid;
-    border-color: grey;*/
+    width: 600px;
+    height: 450px;
+    border-style: solid;
+    border-color: grey;
     margin: 10px;
     padding: 10px;
     align-items: start;
     justify-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 52px 1fr 1fr 1fr 1fr;
-    /*grid-template-areas:
-        "name       name       picture"
-        "location   .          picture"
-        "linkedin   .          picture"
-        "git        .          picture"
-        "bio        bio        bio      "*/
+    grid-template-rows:  1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "picture       picture      picture"
+        "name          name         name"
+        "location      location     location"
+        "linkedin      .            git"
+        "bio           bio          bio      "
     
-        grid-template-areas:
-        "picture        name            name"
-        "picture        location        location"
-        "picture        linkedin        linkedin"
-        "picture        git             git"
-        ".              bio             bio"
-    
+
     
     
 }
 
 .name {
     grid-area: name;
-    font-family: Lucida Grande, Garamond, Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     font-size: 50px;
     color: whitesmoke;
     font-weight: bold;
@@ -79,6 +73,7 @@ export default  {
     grid-area: location;
     align-self: start;
     justify-self: center;
+    font-size: 25px
 
     /*to delete
     background: red;*/
@@ -106,11 +101,14 @@ export default  {
 
 }
 .picture {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    padding: 10px;
     border-radius: 50%;
     border-style: solid;
-    border-color: grey;
+    border-width: 5px;
+    border-color: silver;
 
     
     /*to delete*/

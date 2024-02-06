@@ -35,7 +35,7 @@ export const useContributorStore = defineStore('contributorStore', {
             linkedin: 'https://www.linkedin.com/',
             gitpage: 'https://github.com/',
             bio: 'Full Stack Software Engineer',
-            picture:'' },
+            picture:'../assets/stock_headshot.jpg' },
 
             {id: '5',
             name: 'James Ximenez',
@@ -43,7 +43,7 @@ export const useContributorStore = defineStore('contributorStore', {
             linkedin: 'https://www.linkedin.com/',
             gitpage: 'https://github.com/',
             bio: 'Full Stack Software Engineer',
-            picture:'' },
+            picture:'../assets/stock_headshot.jpg' },
 
         ]
 

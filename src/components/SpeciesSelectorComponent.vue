@@ -2,34 +2,62 @@
   <div id="species-selector-container">
     <!-- Species Selector Element -->
     <div class="species-selector">
-      <div class="species-selector2"></div>
+      <div class="inner-box">
+        <!-- Title -->
 
-      <!-- Title -->
-      <div id="header">species select</div>
+        <!-- Button Container -->
 
-      <!-- Button Container -->
-      <div class="_04-species-dropdown-button">
-        <button class="species-dropdown">Species <fa-fa icon="caret-down"></fa-fa></button>
-        <!-- <fa-fa icon="coffee"></fa-fa> -->
-      </div>
+        <div id="button-container">
+          <div id="header">
+            <h3>species select</h3>
+          </div>
 
-      <div class="_03-species-dropdown-button">
-        <button class="species-dropdown2">Species <fa-fa icon="caret-down"></fa-fa></button>
-      </div>
+          <!-- Test Button -->
 
-      <div class="_02-species-dropdown-button">
-        <button class="species-dropdown3">Species <fa-fa icon="caret-down"></fa-fa></button>
-      </div>
+          <div id="test-button">
+            
+            <drop-down-component :items="scripts" />
+            <!-- <font-awesome-icon :icon="['fas', 'caret-down']"/> -->
+          </div>
 
-      <div class="_01-species-dropdown-button">
-        <button class="species-dropdown4">Species <fa-fa icon="caret-down"></fa-fa></button>
+          <div id="test-button">
+            <drop-down-component :items="scripts" />
+          </div>
+          <div id="test-button">
+            <drop-down-component :items="scripts" />
+          </div>
+          <div id="test-button">
+            <drop-down-component :items="scripts" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import DropDownComponent from './DropDownComponent.vue'
+export default {
+  components: { DropDownComponent },
+  data() {
+    return {
+      scripts: [
+        {
+          title: 'script 1'
+        },
+        {
+          title: 'script 2'
+        },
+        {
+          title: 'script 3'
+        },
+        {
+          title: 'script 4'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -43,96 +71,37 @@ export default {}
   position: relative;
 }
 
-.species-selector2 {
+.inner-box {
   background: rgba(10, 17, 28, 0.5);
   border-radius: 30px;
   height: 100%;
 }
+
+#button-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-content: center;
+  margin-left: 10px;
+}
 #header {
   display: flex;
-  color: #fbf8f8;
+  color: chartreuse;
   text-align: left;
-  font-family: 'Michroma-Regular', sans-serif;
   font-size: 15px;
   font-weight: 400;
-  position: absolute;
   width: 100%;
   justify-content: center;
-  top: 29px;
 }
 
-._04-species-dropdown-button {
-  width: 200px;
+.button-div {
+  width: 100%;
   height: 31px;
-  position: static;
+  display: flex;
+  justify-content: center;
 }
-.species-dropdown {
-  background: rgba(60, 131, 141, 0.75);
-  border-radius: 5px;
-  border-style: solid;
-  border-color: #ffffff;
-  border-width: 1px;
-  width: 200px;
-  height: 31px;
-  position: absolute;
-  left: 12px;
-  top: 81px;
-}
-.species-dropdown:hover{
-  border: solid white 2px;
-}
-
-.species-dropdown2 {
-  background: rgba(60, 131, 141, 0.75);
-  border-radius: 5px;
-  border-style: solid;
-  border-color: #ffffff;
-  border-width: 1px;
-  width: 200px;
-  height: 31px;
-  position: absolute;
-  left: 12px;
-  top: 120px;
-}
-
-.species-dropdown2:hover{
-  border: solid white 2px;
-}
-
-.species-dropdown3 {
-  background: rgba(60, 131, 141, 0.75);
-  border-radius: 5px;
-  border-style: solid;
-  border-color: #ffffff;
-  border-width: 1px;
-  width: 200px;
-  height: 31px;
-  position: absolute;
-  left: 12px;
-  top: 159px;
-}
-
-.species-dropdown3:hover{
-  border: solid white 2px;
-}
-
-.species-dropdown4 {
-  background: rgba(60, 131, 141, 0.75);
-  border-radius: 5px;
-  border-style: solid;
-  border-color: #ffffff;
-  border-width: 1px;
-  width: 200px;
-  height: 31px;
-  position: absolute;
-  left: 12px;
-  top: 198px;
-}
-
-.species-dropdown4:hover{
-  border: solid white 2px;
-}
-
 
 .v-enter-active,
 .v-leave-active {

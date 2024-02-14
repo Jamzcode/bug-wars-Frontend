@@ -38,6 +38,7 @@ export default {}
 .map-selector{
   display: flex;
   justify-content: center;
+  
 }
 
 .map-selector-box {
@@ -69,7 +70,6 @@ export default {}
   justify-self: center;
   align-self: end;
   color: #3c838d;
-  font-family: 'Michroma-Regular', sans-serif;
   font-size: 30px;
   font-weight: 400;
   margin: 0;
@@ -118,7 +118,6 @@ export default {}
   justify-self: center;
   color: #53b290;
   text-align: center;
-  font-family: 'Michroma-Regular', sans-serif;
   font-size: 15px;
   font-weight: 400;
   position: absolute;
@@ -147,5 +146,6 @@ img:hover{
   opacity: 0;
   transform: translateY(100px);
 }
+
 
 </style>

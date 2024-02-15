@@ -119,23 +119,11 @@ export default {
 </script>
 
 <style>
-/* html{
-  height: 100%;
-  background: linear-gradient(#141e30, #243b55);
-  color: white;
-}
-.login{
-}
-
-#login-button{
-  margin: 30px;
-
-} */
 
 #logo{
   border-radius: 150px;
   margin-bottom: 50px;
-  border: solid white 1px;
+  border: solid rgba(255, 255, 255, 0) 1px;
 }
 
 #login-box{

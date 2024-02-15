@@ -9,17 +9,11 @@
 
         <div id="button-container">
           <div id="header">
-            <h3>species select</h3>
+            <h3>SPECIES SELECT</h3>
           </div>
-
-          <!-- Test Button -->
-
           <div id="test-button">
-            
             <drop-down-component :items="scripts" />
-            <!-- <font-awesome-icon :icon="['fas', 'caret-down']"/> -->
           </div>
-
           <div id="test-button">
             <drop-down-component :items="scripts" />
           </div>
@@ -61,22 +55,26 @@ export default {
 </script>
 
 <style scoped>
+#test-button {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+}
 .species-selector {
-  border-radius: 30px;
+  border-radius: 20px;
   border-style: solid;
   /* border-color: #ffffff; */
   border-width: 1px;
   width: 225px;
   height: 285px;
   position: relative;
+  gap: 10px;
 }
-
 .inner-box {
   background: rgba(10, 17, 28, 0.5);
   border-radius: 30px;
   height: 100%;
 }
-
 #button-container {
   height: 100%;
   display: flex;
@@ -84,36 +82,23 @@ export default {
   gap: 10px;
   justify-content: center;
   align-content: center;
-  margin-left: 10px;
 }
 #header {
   display: flex;
-  color: chartreuse;
-  text-align: left;
-  font-size: 15px;
-  font-weight: 400;
+  color: #53b290;
+  font-size: 12px;
   width: 100%;
   justify-content: center;
+  font-family: 'Michroma', sans-serif;
 }
-
+h3 {
+  height: 30px;
+  margin: 0;
+}
 .button-div {
   width: 100%;
   height: 31px;
   display: flex;
   justify-content: center;
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition:
-    opacity 2s ease,
-    transform 1s ease-in-out;
-  transform: translateY(0px);
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-  transform: translateY(100px);
 }
 </style>

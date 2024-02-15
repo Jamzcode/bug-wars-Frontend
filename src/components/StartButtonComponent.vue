@@ -14,9 +14,10 @@ button {
   height: 55px;
   border-radius: 10px;
   background: #e55300;
+  border: #e55300;
   justify-content: center;
   color: black;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Michroma', sans-serif;
   font-size: 30px;
   font-style: normal;
   border: none;

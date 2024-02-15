@@ -12,7 +12,7 @@
         </div>
 
         <div id="map-window">
-          <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\map-image.jpg" alt="Bedbug">
+          <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\map-image.jpg" alt="map">
         </div>
 
         <div class="right-arrow">
@@ -21,7 +21,7 @@
           </button>
         </div>
 
-        <div id="level-name">ARENA: Your back yard...</div>
+        <div id="level-name">ARENA: YOUR BACK YARD...</div>
         <div id="box-label">WAR ZONE</div>
       </div>
     
@@ -53,7 +53,7 @@ export default {}
     '. level-name level-name .';
 
   background: #0a111c;
-  border-radius: 30px;
+  border-radius: 20px;
   border-style: solid;
   border-color: #ffffff;
   border-width: 1px;
@@ -69,10 +69,12 @@ export default {}
   grid-area: map-select;
   justify-self: center;
   align-self: end;
-  color: #3c838d;
+  color: #53b290;
   font-size: 30px;
   font-weight: 400;
-  margin: 0;
+ margin-bottom: 10px;
+ font-family: 'Michroma', sans-serif;
+
 }
 #map-window {
   grid-area: map-window;
@@ -90,8 +92,8 @@ export default {}
 }
 
 #left{
-  color: chartreuse;
-  background-color: #e55300;
+color: #ffffff;
+background: rgba(60, 131, 141, 0.75);
 }
 
 .right-arrow {
@@ -101,16 +103,18 @@ export default {}
 }
 
 #right{
-  color: chartreuse;
-  background-color: #e55300;
+  color: #ffffff;
+  background: rgba(60, 131, 141, 0.75);
 }
 
 #left:hover{
-  background: goldenrod;
+  background-color: rgb(66, 189, 193);
+  border: solid white 2px;
 }
 
 #right:hover{
-  background: goldenrod;
+  background-color: rgb(66, 189, 193);
+  border: solid white 2px;
 }
 
 #level-name {
@@ -118,20 +122,22 @@ export default {}
   justify-self: center;
   color: #53b290;
   text-align: center;
+  top:15px;
   font-size: 15px;
   font-weight: 400;
   position: absolute;
   width: auto;
+  font-family: 'Michroma', sans-serif;
+
 }
 
 img{
-  border: white dotted 1.5px;
+  border: white solid 1px;
 }
 
 img:hover{
-  border: white solid 2px;
-  width: 350;
-  height: 360px;
+  border: white solid 1px;
+  transform: scale(1.1);
 }
 .v-enter-active,
 .v-leave-active {

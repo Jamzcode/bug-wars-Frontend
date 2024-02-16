@@ -128,6 +128,8 @@ export default {
 
 #login-box{
   flex-direction: column;
+  font-family: 'Michroma', sans-serif;
+
 }
 
 html {

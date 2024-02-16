@@ -320,6 +320,8 @@ body {
   padding: 0;
   font-family: sans-serif;
   background: linear-gradient(#141e30, #243b55);
+  font-family: 'Michroma', sans-serif;
+
   /* display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -377,6 +379,7 @@ h2 h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .v-enter-active,

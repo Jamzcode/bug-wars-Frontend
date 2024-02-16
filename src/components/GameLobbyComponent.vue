@@ -1,4 +1,5 @@
 <template>
+  <Transition appear>
     <div id="map-species-start">
       <div id="image" >
         <img id="logo" src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\bugwars-logo.png" alt="">
@@ -14,7 +15,9 @@
       <div id="start-button">
         <start-button-component />
       </div>
+    
   </div>
+</Transition>
 </template>
 
 <script>
@@ -65,6 +68,20 @@ justify-self: center;
   justify-content: center;
 grid-area: image;
 
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition:
+    opacity 2s ease,
+    transform 1s ease-in-out;
+  transform: translateY(0px);
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(100px);
 }
 
 

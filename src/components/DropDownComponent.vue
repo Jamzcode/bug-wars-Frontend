@@ -29,11 +29,11 @@ export default {
       this.isOpen = !this.isOpen
     },
     selectOption(event) {
-      this.selected = event.target.innerText;
-      const choice = this.selected;
-      if (choice == '...'){
-        this.selected = '';
-              }
+      this.selected = event.target.innerText
+      const choice = this.selected
+      if (choice == '...') {
+        this.selected = ''
+      }
     }
   }
 }
@@ -58,13 +58,12 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   /* border: solid red 3px; */
 }
 
-#icon-script{
+#icon-script {
   font-family: 'Michroma', sans-serif;
-
 }
 
 .menu-button:hover {
@@ -96,13 +95,11 @@ a {
   justify-content: center;
 }
 
-a:hover{
+a:hover {
   font-weight: 900;
 }
 
-#caret{
-  color:rgb(179, 179, 179);
+#caret {
+  color: rgb(179, 179, 179);
 }
-
-
 </style>

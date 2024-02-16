@@ -2,7 +2,7 @@
   <div id="species-selector-container">
     <!-- Species Selector Element -->
     <div class="species-selector">
-      <div class="inner-box">
+      
         <!-- Title -->
 
         <!-- Button Container -->
@@ -11,7 +11,9 @@
           <div id="header">
             <h3>SPECIES SELECT</h3>
           </div>
-          <div id="test-button">
+
+        
+            <div id="test-button">
             <drop-down-component :items="scripts" />
           </div>
           <div id="test-button">
@@ -23,7 +25,9 @@
           <div id="test-button">
             <drop-down-component :items="scripts" />
           </div>
-        </div>
+          
+          
+        
       </div>
     </div>
   </div>
@@ -37,16 +41,19 @@ export default {
     return {
       scripts: [
         {
-          title: 'script 1'
+          title: '...'
         },
         {
-          title: 'script 2'
+          title: 'SCRIPT '
         },
         {
-          title: 'script 3'
+          title: 'SCRIPT'
         },
         {
-          title: 'script 4'
+          title: 'SCRIPT'
+        },
+        {
+          title: 'SCRIPT'
         }
       ]
     }
@@ -55,6 +62,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 #test-button {
   display: flex;
   justify-content: center;
@@ -65,16 +74,14 @@ export default {
   border-style: solid;
   /* border-color: #ffffff; */
   border-width: 1px;
+  background: #0a111c;
+
   width: 225px;
   height: 285px;
   position: relative;
   gap: 10px;
 }
-.inner-box {
-  background: rgba(10, 17, 28, 0.5);
-  border-radius: 30px;
-  height: 100%;
-}
+
 #button-container {
   height: 100%;
   display: flex;

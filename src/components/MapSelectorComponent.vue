@@ -92,7 +92,7 @@ export default {}
 }
 
 #left{
-color: #ffffff;
+color: rgb(179, 179, 179);
 background: rgba(60, 131, 141, 0.75);
 }
 
@@ -103,18 +103,20 @@ background: rgba(60, 131, 141, 0.75);
 }
 
 #right{
-  color: #ffffff;
+  color: rgb(179, 179, 179);
   background: rgba(60, 131, 141, 0.75);
 }
 
 #left:hover{
   background-color: rgb(66, 189, 193);
   border: solid white 2px;
+  color: white;
 }
 
 #right:hover{
   background-color: rgb(66, 189, 193);
   border: solid white 2px;
+  color: white;
 }
 
 #level-name {

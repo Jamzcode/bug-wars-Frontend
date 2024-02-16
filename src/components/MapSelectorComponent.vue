@@ -70,8 +70,8 @@ export default {}
   justify-self: center;
   align-self: end;
   color: #53b290;
-  font-size: 30px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: bold;
  margin-bottom: 10px;
  font-family: 'Michroma', sans-serif;
 
@@ -126,7 +126,7 @@ background: rgba(60, 131, 141, 0.75);
   text-align: center;
   top:15px;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: bold;
   position: absolute;
   width: auto;
   font-family: 'Michroma', sans-serif;

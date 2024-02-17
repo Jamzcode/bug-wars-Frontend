@@ -1,17 +1,22 @@
 <template>
-  <div>
-    My Game Lobby
+  
+  <div id="game-lobby-window">
+    <game-lobby-component />
   </div>
-  <game-lobby-component/>
+
 </template>
 
 <script>
-import GameLobbyComponent from '@/components/GameLobbyComponent.vue';
+import GameLobbyComponent from '@/components/GameLobbyComponent.vue'
 export default {
-components:{ GameLobbyComponent }
+  components: { GameLobbyComponent }
 }
 </script>
 
-<style>
-
+<style scoped>
+#game-lobby-window {
+  height: 100%;
+  width: 100%;
+  /* border: solid red 3px; */
+}
 </style>

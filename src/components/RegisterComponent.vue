@@ -1,7 +1,14 @@
 <template>
   <Transition appear>
     <body>
+      <!-- <div id="image"><img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\bugwars-logo.png" alt=""></div> -->
+
       <div id="register">
+
+        <div > <img id="logo" src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\bugwars-logo.png
+          " alt="logo"></div>
+
+
         <form @submit.prevent="register">
           <div id="fields">
             <div class="header-txt">
@@ -298,18 +305,42 @@ export default {
 }
 </script>
 <style scoped>
+#logo{
+  background-color: none;
+  border-radius: 150px;
+  border: white solid 1px;
+  margin-bottom: 50px;
+
+}
+
+
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   background: linear-gradient(#141e30, #243b55);
+  font-family: 'Michroma', sans-serif;
+
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  grid-template-areas: 
+  ". logo ."
+  ". register ."
+  ; */
 }
 
 #register {
+  grid-area: register;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+
+  
 }
 
 h2 h6 {
@@ -329,6 +360,7 @@ h2 h6 {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+
 }
 
 .err-msg {
@@ -347,6 +379,7 @@ h2 h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .v-enter-active,
@@ -362,4 +395,8 @@ h2 h6 {
   opacity: 0;
   transform: translateY(100px);
 }
+/* #image{
+  grid-area: image;
+} */
+
 </style>

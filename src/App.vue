@@ -2,6 +2,14 @@
   <header>
     <div class="wrapper">
       <nav>
+        <div class="left-links">
+          <RouterLink id="link" to="/"> HOME |</RouterLink>
+          <RouterLink id="link" to="/login"> LOGIN </RouterLink>
+        </div>
+        <div class="right-links">
+          <RouterLink id="link" to="/register"> REGISTER |</RouterLink>
+          <RouterLink id="link" to="/credits"> CREDITS</RouterLink>
+        </div>
         <RouterLink to="/"> Home |</RouterLink>
         <RouterLink to="/login"> Login |</RouterLink>
         <RouterLink to="/register"> Register | </RouterLink>
@@ -19,4 +27,27 @@ import { RouterLink, RouterView } from 'vue-router'
 
 </script>
 
-<style scoped></style>
+<style>
+
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+#link{
+  text-decoration: none;
+  color: rgb(179, 179, 179);
+  font-family: 'Michroma', sans-serif;
+
+}
+
+#link:hover{
+  color: white;
+}
+
+
+</style>

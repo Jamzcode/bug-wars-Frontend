@@ -1,4 +1,5 @@
 <template>
+  
   <div>
     <register-component />
   </div>
@@ -9,4 +10,7 @@ export default {
   components: { RegisterComponent }
 }
 </script>
-<style></style>
+<style>
+
+
+</style>

@@ -1,6 +1,9 @@
 <template>
   <Transition appear>
-    <div class="login-box">
+    <div id="login-box" class="login-box">
+
+      <div> <img id="logo" src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\bugwars-logo.png" alt="logo"></div>
+
       <form id="login-form" @submit.prevent="login">
         <div id="fields">
           <div class="header-text">
@@ -116,18 +119,18 @@ export default {
 </script>
 
 <style>
-/* html{
-  height: 100%;
-  background: linear-gradient(#141e30, #243b55);
-  color: white;
-}
-.login{
+
+#logo{
+  border-radius: 150px;
+  margin-bottom: 50px;
+  border: solid rgba(255, 255, 255, 0) 1px;
 }
 
-#login-button{
-  margin: 30px;
+#login-box{
+  flex-direction: column;
+  font-family: 'Michroma', sans-serif;
 
-} */
+}
 
 html {
   height: 100%;

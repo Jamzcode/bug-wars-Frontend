@@ -1,46 +1,41 @@
 <template>
   <Transition appear>
     <div class="homepage-window">
-      
       <div class="bug" id="image">
-        <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\bugwars-logo-homepage.png" alt="bugwars-logo">
+        <img src="..\assets\bugwars-logo-homepage.png" alt="bugwars-logo" />
       </div>
-      
+
       <div class="bug" id="spider">
-        <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\Spider pic.png" alt="spider">
+        <img src="..\assets\Spider pic.png" alt="spider" />
       </div>
-      
+
       <div class="bug" id="ant">
-        <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\Ant pic.png" alt="ant">
+        <img src="..\assets\Ant pic.png" alt="ant" />
       </div>
-      
+
       <div class="bug" id="beetle">
-        <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\Beetle pic.png" alt="beetle">
+        <img src="..\assets\Beetle pic.png" alt="beetle" />
       </div>
-      
+
       <div class="bug" id="roach">
-        <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\Roach pic.png" alt="roach">
+        <img src="..\assets\Roach pic.png" alt="roach" />
       </div>
-      
     </div>
   </Transition>
 </template>
 
 <style scoped>
-.homepage-window{
+.homepage-window {
   width: 100%;
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
-  ". . . . ."
-  "spider ant image beetle roach"
-  ". . . . ."
-  ;
+    '. . . . .'
+    'spider ant image beetle roach'
+    '. . . . .';
 }
-
-
 
 .v-enter-active,
 .v-leave-active {
@@ -56,30 +51,29 @@
   transform: translateY(100px);
 }
 
-#image{
+#image {
   grid-area: image;
 }
 
-#spider{
+#spider {
   grid-area: spider;
 }
 
-#ant{
+#ant {
   grid-area: ant;
 }
 
-#beetle{
+#beetle {
   grid-area: beetle;
 }
-#roach{
+#roach {
   grid-area: roach;
 }
 
-.bug{
+.bug {
   display: flex;
   justify-content: center;
   align-self: center;
   padding: 0;
 }
-
 </style>

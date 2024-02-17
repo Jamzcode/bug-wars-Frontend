@@ -2,7 +2,7 @@
     
                 <div class="card">
                     <div class="image-content">
-                        <span class="overlay"></span>
+                        <!-- <span class="overlay"></span> Not doing the card overlay-->
 
                         <div class="card-image">
                             <img class="card-img" :src="imgPath(contributor.picture)" alt=""/>
@@ -22,7 +22,7 @@
                             <a :href="gitPath(contributor.gitpage)">
                             <button class="git"><img src='../assets/gitHubIcon.jpg'></button>
                             </a>
-                            <a href="contributor.linkedin">
+                            <a href="contributor.resume">
                             <button class="resume"><img src='../assets/resumeIcon.jpg'></button>
                             </a>
                         </div>
@@ -155,97 +155,5 @@ button:hover {
     width: 50px;
 }
 
-/*Slide container*/
-
-
-
-
-
-/*to delete
-#contributor-card {
-    width: 600px;
-    height: 450px;
-    border-style: solid;
-    border-color: grey;
-    margin: 10px;
-    padding: 10px;
-    align-items: start;
-    justify-items: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows:  1fr 1fr 1fr 1fr;
-    grid-template-areas:
-        "picture       picture      picture"
-        "name          name         name"
-        "location      location     location"
-        "linkedin      .            git"
-        "bio           bio          bio      "
-    
-
-    
-    
-}
-
-.name {
-    grid-area: name;
-    font-family: sans-serif;
-    font-size: 50px;
-    color: whitesmoke;
-    font-weight: bold;
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-    height: 50px;
-    justify-self: center;
-
-    
-    
-    
-}
-
-.location {
-    grid-area: location;
-    align-self: start;
-    justify-self: center;
-    font-size: 25px
-
- 
-
-}
-
-.linkedin {
-    grid-area: linkedin;
-}
-
-.git {
-    grid-area: git;
-}
-
-.bio {
-    grid-area: bio;
-    justify-self: center;
-}
-
-.profile {
-    grid-area: picture;
-    justify-self: center;
-    padding: 10px
-
-
-}
-.picture {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    padding: 10px;
-    border-radius: 50%;
-    border-style: solid;
-    border-width: 5px;
-    border-color: silver;
-
-    
-   
-   
-}
-*/
 </style>
 

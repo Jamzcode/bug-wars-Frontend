@@ -5,7 +5,7 @@
                         <!-- <span class="overlay"></span> Not doing the card overlay-->
 
                         <div class="card-image">
-                            <img class="card-img" :src="imgPath(contributor.picture)" alt=""/>
+                            <img class="card-img" :src="imgPath(contributor.picture)" alt='../assets/stock_headshot.jpg'/>
                         </div>
 
                     </div>

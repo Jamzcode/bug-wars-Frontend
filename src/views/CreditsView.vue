@@ -16,6 +16,7 @@
 
 <script>
     import CreditPersonCard from '../components/ContributorPersonCard.vue';
+    
     //import of contributor store state data
     import { useContributorStore } from '../stores/ContributorStore';
     

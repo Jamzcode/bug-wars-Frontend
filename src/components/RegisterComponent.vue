@@ -5,7 +5,7 @@
 
       <div id="register">
 
-        <div > <img id="logo" src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\bugwars-logo.png
+        <div > <img id="logo" src="..\assets\bugwars-logo.png
           " alt="logo"></div>
 
 

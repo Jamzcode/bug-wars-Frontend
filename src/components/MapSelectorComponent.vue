@@ -1,33 +1,26 @@
 <template>
-  
-    <div class="map-selector">
-      
-      
-        <div class="map-selector-box">
-        
-            <div class="left-arrow">
-          <button id="left">
-            <fa-fa icon="caret-left" />
-          </button>
-        </div>
-
-        <div id="map-window">
-          <img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\map-image.jpg" alt="map">
-        </div>
-
-        <div class="right-arrow">
-          <button id="right">
-            <fa-fa icon="caret-right" />
-          </button>
-        </div>
-
-        <div id="level-name">ARENA: YOUR BACK YARD...</div>
-        <div id="box-label">WAR ZONE</div>
+  <div class="map-selector">
+    <div class="map-selector-box">
+      <div class="left-arrow">
+        <button id="left">
+          <fa-fa icon="caret-left" />
+        </button>
       </div>
-    
-    
-    </div>
 
+      <div id="map-window">
+        <img src="..\assets\map-image.jpg" alt="map" />
+      </div>
+
+      <div class="right-arrow">
+        <button id="right">
+          <fa-fa icon="caret-right" />
+        </button>
+      </div>
+
+      <div id="level-name">ARENA: YOUR BACK YARD...</div>
+      <div id="box-label">WAR ZONE</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -35,10 +28,9 @@ export default {}
 </script>
 
 <style scoped>
-.map-selector{
+.map-selector {
   display: flex;
   justify-content: center;
-  
 }
 
 .map-selector-box {
@@ -72,9 +64,8 @@ export default {}
   color: #53b290;
   font-size: 20px;
   font-weight: bold;
- margin-bottom: 10px;
- font-family: 'Michroma', sans-serif;
-
+  margin-bottom: 10px;
+  font-family: 'Michroma', sans-serif;
 }
 #map-window {
   grid-area: map-window;
@@ -91,9 +82,9 @@ export default {}
   align-self: center;
 }
 
-#left{
-color: rgb(179, 179, 179);
-background: rgba(60, 131, 141, 0.75);
+#left {
+  color: rgb(179, 179, 179);
+  background: rgba(60, 131, 141, 0.75);
 }
 
 .right-arrow {
@@ -102,18 +93,18 @@ background: rgba(60, 131, 141, 0.75);
   align-self: center;
 }
 
-#right{
+#right {
   color: rgb(179, 179, 179);
   background: rgba(60, 131, 141, 0.75);
 }
 
-#left:hover{
+#left:hover {
   background-color: rgb(66, 189, 193);
   border: solid white 2px;
   color: white;
 }
 
-#right:hover{
+#right:hover {
   background-color: rgb(66, 189, 193);
   border: solid white 2px;
   color: white;
@@ -124,20 +115,19 @@ background: rgba(60, 131, 141, 0.75);
   justify-self: center;
   color: #53b290;
   text-align: center;
-  top:15px;
+  top: 15px;
   font-size: 15px;
   font-weight: bold;
   position: absolute;
   width: auto;
   font-family: 'Michroma', sans-serif;
-
 }
 
-img{
+img {
   border: white solid 1px;
 }
 
-img:hover{
+img:hover {
   border: white solid 1px;
   transform: scale(1.1);
 }
@@ -154,6 +144,4 @@ img:hover{
   opacity: 0;
   transform: translateY(100px);
 }
-
-
 </style>

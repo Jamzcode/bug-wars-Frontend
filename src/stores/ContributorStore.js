@@ -10,7 +10,7 @@ export const useContributorStore = defineStore('contributorStore', {
             location: 'Los Angeles, CA', 
             linkedin:'https://www.linkedin.com/in/reiczelbael',
             gitpage: 'https://github.com/zelbael', 
-            bio: 'Full Stack software engineer with previous healthcare experience. Strong coffee enthusiast!', 
+            bio: 'Full Stack Software Engineer with previous healthcare experience. Strong coffee enthusiast!', 
             picture:'../assets/Reiczel_Bael_headshot.JPG' },
 
             {id: '2',
@@ -26,7 +26,7 @@ export const useContributorStore = defineStore('contributorStore', {
             location: 'Saint Paul, MN',
             linkedin: 'https://www.linkedin.com/in/steveher/',
             gitpage: 'https://github.com/Sth84478',
-            bio: 'Full Stack Software Engineer',
+            bio: 'Software Developer, Continuous Learner, Embracing the Power of Problem-Solving and Technological Innovation ',
             picture:'../assets/steve_her_headshot.jpg' },
             
             {id: '4',
@@ -34,7 +34,7 @@ export const useContributorStore = defineStore('contributorStore', {
             location: 'Dallas, TX',
             linkedin: 'https://www.linkedin.com/in/thomaskher/',
             gitpage: 'https://github.com/tkher',
-            bio: 'Full Stack software engineer with background in finance. Hard-working, analytical, problem solver. Enjoys music and fishing',
+            bio: 'Aspiring Full Stack Developer with finance background. Hard-working, analytical, problem solver. Enjoys music and fishing',
             picture:'../assets/thomas_her_headshot.jpg' },
 
             {id: '5',

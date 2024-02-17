@@ -137,7 +137,7 @@ button {
 }
 
 button:hover {
-    background: blue;
+    background: black;
 }
 
 .linkedin img {

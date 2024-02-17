@@ -63,7 +63,7 @@ h1 {
 }
 
 .slide-container{
-    max-width: 2000px; /*was set to 1120px*/
+    max-width: 4000px; /*was set to 1120px*/
     width: 100%;
     background-color: rgb(170, 174, 189);
     padding: 40px 0;

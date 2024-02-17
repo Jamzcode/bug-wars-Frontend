@@ -16,9 +16,15 @@
                         <p class="bio">{{contributor.bio}}</p>
 
                         <div class="button-container">
-                            <button class="linkedin">LinkedIn</button>
-                            <button class="git">git</button>
-                            <button class="resume">Resume</button>
+                            <a :href="linkedinPath(contributor.linkedin)">
+                                <button class="linkedin"><img src='../assets/linkedInIcon.jpg'></button>
+                            </a>
+                            <a :href="gitPath(contributor.gitpage)">
+                            <button class="git"><img src='../assets/gitHubIcon.jpg'></button>
+                            </a>
+                            <a href="contributor.linkedin">
+                            <button class="resume"><img src='../assets/resumeIcon.jpg'></button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -33,9 +39,17 @@
 export default  {
     props: ['contributor'],
     //This methods turns allows you use relative path of img URL's
-    methods: {imgPath() {
+    methods: {
+        imgPath() {
         return new URL(this.contributor.picture, import.meta.url);
-    }}
+    },
+        linkedinPath() {
+            return new URL(this.contributor.linkedin, import.meta.url);
+        },
+        gitPath() {
+            return new URL(this.contributor.gitpage, import.meta.url);
+        }
+    }
     
     }
 
@@ -115,15 +129,30 @@ button {
     border: solid;
     font-size: 15px;
     color: white;
-    padding: 8px 16px;
-    background-color: teal;
+    /*padding: 8px 16px;*/
+    background-color: white;
     border-radius: 6px;
-    margin: 10px;
+    margin: 5px;
 
 }
 
 button:hover {
     background: blue;
+}
+
+.linkedin img {
+    height: 50px;
+    width: 50px;
+}
+
+.git img {
+    height: 50px;
+    width: 80px;
+}
+
+.resume img {
+    height: 50px;
+    width: 50px;
 }
 
 /*Slide container*/

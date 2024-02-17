@@ -10,6 +10,10 @@
           <RouterLink id="link" to="/register"> REGISTER |</RouterLink>
           <RouterLink id="link" to="/credits"> CREDITS</RouterLink>
         </div>
+        <RouterLink to="/"> Home |</RouterLink>
+        <RouterLink to="/login"> Login |</RouterLink>
+        <RouterLink to="/register"> Register | </RouterLink>
+        <RouterLink to="/credits"> Credits </RouterLink>
       </nav>
     </div>
   </header>
@@ -19,6 +23,8 @@
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+
+
 </script>
 
 <style>

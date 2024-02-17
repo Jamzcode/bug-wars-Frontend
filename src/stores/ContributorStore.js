@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 //creates pinia store for contributor cards data
-//This will be stored in useContributorStore function 
+//This will be stored in useContributorStore function on view page 
 export const useContributorStore = defineStore('contributorStore', {
     state: () => ({
         contributor: [
@@ -26,7 +26,7 @@ export const useContributorStore = defineStore('contributorStore', {
             location: 'Dallas, TX',
             linkedin: 'https://www.linkedin.com/in/thomaskher/',
             gitpage: 'https://github.com/tkher',
-            bio: 'Aspiring Full Stack software engineer with background in financial services and securities lending. Hard-working, analytical, problem solver. Enjoys playing music and the great outdoors',
+            bio: 'Full Stack software engineer with background in finance. Hard-working, analytical, problem solver. Enjoys music and fishing',
             picture:'../assets/thomas_her_headshot.jpg' },
 
             {id: '4',

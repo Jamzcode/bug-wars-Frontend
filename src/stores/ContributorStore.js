@@ -43,10 +43,10 @@ export const useContributorStore = defineStore('contributorStore', {
             linkedin: 'https://www.linkedin.com/',
             gitpage: 'https://github.com/',
             bio: 'Full Stack Software Engineer',
-            picture:'../assets/stock_headshot.jpg' },
+            picture:'../assets/james_ximenez_headshot.jpg' },
 
             {id: '6',
-            name: 'Bianca',
+            name: 'Bianca Flores',
             location: 'TBD, TBD',
             linkedin: 'https://www.linkedin.com/',
             gitpage: 'https://github.com/',

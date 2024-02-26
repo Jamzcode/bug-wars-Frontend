@@ -117,7 +117,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #logo {
   border-radius: 150px;
   margin-bottom: 50px;

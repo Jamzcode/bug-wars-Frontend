@@ -1,5 +1,5 @@
 <template>
-    <h1>Meet Our Designers</h1>
+    <h1>DESIGNERS</h1>
     
     <section class="body">
         <div class="slide-container">
@@ -42,6 +42,7 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    font-family: 'Michroma', sans-serif;
 }
 
 #main{
@@ -66,7 +67,7 @@ h1 {
 .slide-container{
     max-width: 4000px; /*was set to 1120px*/
     width: 100%;
-    background-color: rgb(170, 174, 189);
+    background-color: rgba(170, 174, 189, 0.283);
     padding: 40px 0;
 }
 

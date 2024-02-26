@@ -66,7 +66,8 @@ export default  {
 
 .card{
     border-radius: 25px;
-    background-color: rgb(255, 255, 255);
+    background-color:#0a111c;
+    
     width: 320px;
     height: 400px;
 }
@@ -77,6 +78,7 @@ export default  {
     flex-direction: column;
     align-items: center;
     padding: 10px 14px;
+    
 }
 
 .image-content {
@@ -88,7 +90,7 @@ export default  {
     height: 150px;
     width: 150px;
     border-radius: 50%;
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
     padding: 5px;
 }
 
@@ -97,26 +99,33 @@ export default  {
     width: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 6px solid rgba(27, 27, 105, 0.788);
+    border: 3px solid  #53b290;
 }
 
 
 .name{
-    color:rgba(19, 18, 18, 0.918);
+    color:  #e55300;
+    /* color:rgba(19, 18, 18, 0.918); */
     font-weight: bold;
-    font-size: 32px;
+    font-size: 25px;
+    font-family: 'Michroma', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .location{
-    color: rgb(81, 81, 82);
+    color: #53b290;
+    /* color: rgb(81, 81, 82); */
     font-size: 20px;
 }
 .bio{
     font-size: 15px;
-    color: rgb(81, 81, 82);
+    color: #53b290;
+    /* color: rgb(81, 81, 82); */
     text-align: center;
-    height: 50px;
     margin: 5px;
+    height: 40px;
 }
 
 .button-container {

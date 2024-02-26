@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="script-editor-container">
     <script-editor-component/>
   </div>
 </template>
@@ -13,7 +13,11 @@ components: { ScriptEditorComponent }
 </script>
 
 <style scoped>
-div{
+#script-editor-container{
+  display: flex;
+  justify-content: center;
+  
   height: 100vh;
+  border: solid red 3px;
 }
 </style>

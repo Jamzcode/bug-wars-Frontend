@@ -50,7 +50,7 @@ export default {}
   width: 127.04px;
   height: 19.96px;
  
-  position: absolute;
+  /* position: absolute; */
   background: #9b9b9b;
   border-radius: 5px;
 }
@@ -59,7 +59,7 @@ export default {}
   width: 127.04px;
   height: 19.96px;
   
-  position: absolute;
+  /* position: absolute; */
   background: #e55300;
   border-radius: 5px;
   font-family: Michroma;
@@ -90,7 +90,7 @@ export default {}
   height: 445px;
   left: 8px;
   top: 74px;
-  position: absolute;
+  /* position: absolute; */
   background: #0a111c;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
@@ -102,7 +102,7 @@ export default {}
   height: 19.96px;
   left: 18px;
   top: 87px;
-  position: absolute;
+  /* position: absolute; */
   border: solid #53b290 1px;
   border-radius: 5px;
 }
@@ -113,7 +113,8 @@ export default {}
   height: 149.68px;
   left: 18px;
   top: 114px;
-  position: absolute;
+  /* position: absolute; */
+  border-radius: 5px;
 }
 
 #output-box {
@@ -121,8 +122,9 @@ export default {}
   height: 158px;
   left: 18px;
   top: 344px;
-  position: absolute;
+  /* position: absolute; */
   background: #5d5e61;
+  border-radius: 5px;
 }
 
 #output-label {
@@ -130,7 +132,7 @@ export default {}
   height: 23px;
   left: 18px;
   top: 318px;
-  position: absolute;
+  /* position: absolute; */
   text-align: center;
   color: white;
   font-size: 16px;
@@ -144,7 +146,7 @@ export default {}
   height: 11.64px;
   left: 129px;
   top: 327px;
-  position: absolute;
+  /* position: absolute; */
   text-align: center;
   color: #e55300;
   font-size: 10px;
@@ -158,7 +160,7 @@ export default {}
   height: 40px;
   left: -38px;
   top: 559px;
-  position: absolute;
+  /* position: absolute; */
   transform: rotate(-90deg);
   transform-origin: 0 0;
   text-align: center;

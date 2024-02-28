@@ -1,42 +1,41 @@
 <template>
-  <div>
+  <div id="script-editor-container">
     <!-- Needs Logo -->
-
-
-
-
-
-    <!-- Adjust box to be display:grid and map out elements inside. -->
-    <div id="script-editor-box"></div>
-
-    <!-- save button div -->
-    <div class="button-div" style="left: 159px; top: 281px; position: absolute">
-      <button id="save-button" style="">SAVE</button>
-    </div>
-
-    <!-- generate button div -->
-    <div class="button-div" style="left: 17px; top: 282px; position: absolute">
-      <button id="generate-button">GENERATE</button>
-    </div>
-
-    <!-- confirm button div -->
-    <div
-      class="button-div"
-      style="left: 159px; top: 87px; position: absolute"
-    >
-      <button id="confirm-button" style="">CONFIRM</button>
-    </div>
-    <input id="script-name-input-field" placeholder="script-name">
-    <div id="script-input-box"></div>
-
-    <!-- script-name-display should be an input field -->
-    <div id="script-name-display">SCRIPT_NAME</div>
 
     <div id="title">SCRIPT EDITOR</div>
 
-    <div id="output-label">OUTPUT :</div>
+    <!-- Adjust box to be display:grid and map out elements inside. -->
+    <div id="script-editor-box">
+      <div id="name-input-div">
+        <input id="name-input-field" placeholder="script-name" />
+      </div>
 
-    <div id="output-box"></div>
+      <!-- confirm button div -->
+      <div id="confirm-button-div">
+        <button id="confirm-button">CONFIRM</button>
+      </div>
+
+      <div id="script-input-div">
+        <input id="script-input" type="text" placeholder="Add script moves" />
+      </div>
+
+      <!-- generate button div -->
+      <div id="generate-button-div">
+        <button id="generate-button">GENERATE</button>
+      </div>
+
+      <!-- save button div -->
+      <div id="save-button-div">
+        <button id="save-button">SAVE</button>
+      </div>
+
+      <!-- script-name-display should be an input field -->
+      <div id="script-name-display">SCRIPT_NAME</div>
+
+      <div id="output-label">OUTPUT :</div>
+
+      <div id="output-box"></div>
+    </div>
   </div>
 </template>
 
@@ -45,122 +44,17 @@ export default {}
 </script>
 
 <style scoped>
-#save-button {
-  font-family: Michroma;
-  width: 127.04px;
-  height: 19.96px;
- 
-  /* position: absolute; */
-  background: #9b9b9b;
-  border-radius: 5px;
-}
-
-#generate-button {
-  width: 127.04px;
-  height: 19.96px;
-  
-  /* position: absolute; */
-  background: #e55300;
-  border-radius: 5px;
-  font-family: Michroma;
-}
-
-.button-div {
-  width: 127.04px;
-  height: 19.96px;
-}
-
-#confirm-button {
-
-  /* source and adjust flex-wrap */
+#script-editor-container{
   display: flex;
-  align-content: center;
-  justify-content: center;
-  
-  
-  width: 127.04px;
-  height: 19.96px;
-  background: #53b290;
-  border-radius: 5px;
-  font-family: Michroma;
-}
+  flex-direction: row;
+  border: solid chartreuse 3px;
 
-#script-editor-box {
-  width: 292px;
-  height: 445px;
-  left: 8px;
-  top: 74px;
-  /* position: absolute; */
-  background: #0a111c;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  border: 1px solid;
-}
-
-#script-name-input-field {
-  width: 127.04px;
-  height: 19.96px;
-  left: 18px;
-  top: 87px;
-  /* position: absolute; */
-  border: solid #53b290 1px;
-  border-radius: 5px;
-}
-
-#script-input-box {
-  background: #5d5e61;
-  width: 269.15px;
-  height: 149.68px;
-  left: 18px;
-  top: 114px;
-  /* position: absolute; */
-  border-radius: 5px;
-}
-
-#output-box {
-  width: 268px;
-  height: 158px;
-  left: 18px;
-  top: 344px;
-  /* position: absolute; */
-  background: #5d5e61;
-  border-radius: 5px;
-}
-
-#output-label {
-  width: 105.45px;
-  height: 23px;
-  left: 18px;
-  top: 318px;
-  /* position: absolute; */
-  text-align: center;
-  color: white;
-  font-size: 16px;
-  font-family: Michroma;
-  font-weight: 400;
-  word-wrap: break-word;
-}
-
-#script-name-display {
-  width: 113.04px;
-  height: 11.64px;
-  left: 129px;
-  top: 327px;
-  /* position: absolute; */
-  text-align: center;
-  color: #e55300;
-  font-size: 10px;
-  font-family: Michroma;
-  font-weight: 400;
-  word-wrap: break-word;
 }
 
 #title {
   width: 504px;
   height: 40px;
-  left: -38px;
-  top: 559px;
-  /* position: absolute; */
+  
   transform: rotate(-90deg);
   transform-origin: 0 0;
   text-align: center;
@@ -169,11 +63,122 @@ export default {}
   font-family: Michroma;
   font-weight: 400;
   letter-spacing: 5.2px;
-  word-wrap: break-word;
+  border: solid purple 2px;
+  /* word-wrap: break-word; */
 }
 
-.script-editor-box,
+
+
+#script-editor-box {
+  width: 600px;
+  height: 750px;
+  background: #0a111c;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  border: 1px solid;
+  border: solid red 3px;
+  display: grid;
+  grid-template-columns: 1fr 6fr 6fr 1fr;
+  grid-template-rows: 1fr 1fr 6fr 1fr 1fr 6fr 1fr;
+  grid-template-areas:
+    '. . . .'
+    '. name confirm .'
+    '. script-input script-input .'
+    '. gen save .'
+    '. output-label name-display .'
+    '. script-output script-output .'
+    '. . . .';
+}
+
+#name-input-div {
+  grid-area: name;
+  width: 100%;
+  height: 100%;
+
+  border: solid #53b290 1px;
+  border-radius: 5px;
+}
+
+#confirm-button-div {
+  grid-area: confirm;
+  width: 100%;
+  height: 100%;
+
+  /* source and adjust flex-wrap */
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  background: #53b290;
+  border-radius: 5px;
+  font-family: Michroma;
+}
+
+#script-input-div {
+  grid-area: script-input;
+  width: 100%;
+  height: 100%;
+  background: #5d5e61;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+}
+
+#generate-button-div {
+  grid-area: gen;
+  width: 100%;
+  height: 100%;
+  background: #e55300;
+  border-radius: 5px;
+  font-family: Michroma;
+}
+
+#save-button-div {
+  grid-area: save;
+  width: 100%;
+  height: 100%;
+  font-family: Michroma;
+  width: 127.04px;
+  height: 19.96px;
+  background: #9b9b9b;
+  border-radius: 5px;
+}
+
+#output-label {
+  grid-area: output-label;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-family: Michroma;
+  font-weight: 400;
+  /* word-wrap: break-word; */
+}
+
+#script-name-display {
+  grid-area: name-display;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #e55300;
+  font-size: 10px;
+  font-family: Michroma;
+  font-weight: 400;
+  /* word-wrap: break-word; */
+
+}
+
+#output-box {
+  grid-area: script-output;
+  width: auto;
+  height: auto;
+  background: #5d5e61;
+  border-radius: 5px;
+}
+
+/* .script-editor-box,
 .script-editor-box * {
   box-sizing: border-box;
-}
+} */
 </style>

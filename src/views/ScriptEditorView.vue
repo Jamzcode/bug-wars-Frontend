@@ -18,6 +18,7 @@ components: { ScriptEditorComponent }
   justify-content: center;
   
   height: 100vh;
-  border: solid red 3px;
+  width: 100%;
+  
 }
 </style>

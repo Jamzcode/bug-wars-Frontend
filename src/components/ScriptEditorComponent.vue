@@ -1,19 +1,20 @@
 <template>
   <!-- Needs Logo -->
-
-  <div id="script-editor-title-div">
+  
+  
+  <div id="script-editor-title-container">
     <div id="title-div">
       <h1 id="title">SCRIPT EDITOR</h1>
     </div>
 
     <!-- Adjust box to be display:grid and map out elements inside. -->
-    <div id="script-editor-container">
+    <div id="script-editor-div">
       <div id="script-editor-box">
         <div id="name-input-div">
           <input id="name-input-field" placeholder="script-name" />
         </div>
 
-        <!-- confirm button div -->
+        
         <div id="confirm-button-div">
           <button id="confirm-button">CONFIRM</button>
         </div>
@@ -22,17 +23,17 @@
           <input id="script-input" type="text" placeholder="Add script moves" />
         </div>
 
-        <!-- generate button div -->
+        
         <div id="generate-button-div">
           <button id="generate-button">GENERATE</button>
         </div>
 
-        <!-- save button div -->
+       
         <div id="save-button-div">
           <button id="save-button">SAVE</button>
         </div>
 
-        <!-- script-name-display should be an input field -->
+     
         <div id="script-name-display">SCRIPT_NAME</div>
 
         <div id="output-label">OUTPUT :</div>
@@ -50,6 +51,14 @@ export default {}
 <style scoped>
 
 
+
+#logo{
+  display: flex;
+  justify-content: center;
+  width: auto;
+  height: auto;
+}
+
 button {
   border-radius: 5px;
 }
@@ -60,8 +69,9 @@ div {
   width: 100%;
 }
 #title-div {
-  width: 100%;
+  width: 67%;
   justify-content: flex-end;
+  /* border: solid red 1px; */
 }
 
 #title {
@@ -113,6 +123,7 @@ div {
   width: 130px;
   height: 30px;
   margin-bottom: 5px;
+  font-family: Michroma;
 }
 
 #confirm-button-div {
@@ -126,11 +137,11 @@ div {
   justify-content: center;
   width: 130px;
   height: 30px;
-
+  font-family: Michroma;
   background: #53b290;
   border: #53b290;
 
-  font-family: Michroma;
+  
   margin-bottom: 5px;
 }
 

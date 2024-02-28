@@ -1,8 +1,9 @@
 <template>
   <div id="script-editor-container">
     <!-- Needs Logo -->
-
-    <div id="title">SCRIPT EDITOR</div>
+    <div id="title-div">
+      <h1 id="title">SCRIPT EDITOR</h1>
+    </div>
 
     <!-- Adjust box to be display:grid and map out elements inside. -->
     <div id="script-editor-box">
@@ -15,7 +16,7 @@
         <button id="confirm-button">CONFIRM</button>
       </div>
 
-      <div id="script-input-div">
+      <div id="script-input-box">
         <input id="script-input" type="text" placeholder="Add script moves" />
       </div>
 
@@ -44,42 +45,56 @@ export default {}
 </script>
 
 <style scoped>
-#script-editor-container{
+
+button{
+  border-radius: 5px;
+}
+
+div{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  
+}
+#title-div {
+  display: flex;
+  
+  margin: 0;
+  /* transform: rotate(-90deg);
+  transform-origin: 0 0; */
+}
+
+#script-editor-container {
   display: flex;
   flex-direction: row;
-  border: solid chartreuse 3px;
-
+  /* border: solid chartreuse 3px; */
+  align-items: center;
+  border: solid purple 2px;
 }
 
 #title {
   width: 504px;
   height: 40px;
-  
-  transform: rotate(-90deg);
-  transform-origin: 0 0;
   text-align: center;
   color: #708396;
   font-size: 40px;
   font-family: Michroma;
   font-weight: 400;
   letter-spacing: 5.2px;
-  border: solid purple 2px;
+
   /* word-wrap: break-word; */
 }
 
-
-
 #script-editor-box {
   width: 600px;
-  height: 750px;
+  height: 700px;
   background: #0a111c;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  border: 1px solid;
-  border: solid red 3px;
+ 
   display: grid;
-  grid-template-columns: 1fr 6fr 6fr 1fr;
-  grid-template-rows: 1fr 1fr 6fr 1fr 1fr 6fr 1fr;
+  grid-template-columns: .5fr 8fr 8fr .5fr;
+  grid-template-rows: .5fr 1fr 8fr 1fr 1fr 8fr .5fr;
   grid-template-areas:
     '. . . .'
     '. name confirm .'
@@ -92,89 +107,117 @@ export default {}
 
 #name-input-div {
   grid-area: name;
-  width: 100%;
-  height: 100%;
+  align-items: flex-end;
+  
+  
 
+
+}
+
+#name-input-field{
   border: solid #53b290 1px;
   border-radius: 5px;
+  width:130px;
+  height: 30px;
+  margin-bottom: 5px;
 }
 
 #confirm-button-div {
   grid-area: confirm;
-  width: 100%;
-  height: 100%;
+  align-items: flex-end;
+  justify-content: end;
+  
+ 
+}
 
-  /* source and adjust flex-wrap */
+#confirm-button{
   display: flex;
   align-content: center;
   justify-content: center;
+  width:130px;
+  height: 30px;
 
   background: #53b290;
-  border-radius: 5px;
+  
   font-family: Michroma;
+  margin-bottom: 5px;
+
+  
 }
 
-#script-input-div {
+#script-input-box {
   grid-area: script-input;
+  background: #0a111c;
+
+}
+
+#script-input{
   width: 100%;
-  height: 100%;
-  background: #5d5e61;
-  width: auto;
-  height: auto;
-  border-radius: 5px;
+  border-left: #53b290 solid 3px;
+  background: #0a111c;
+
 }
 
 #generate-button-div {
   grid-area: gen;
-  width: 100%;
-  height: 100%;
+  
+}
+
+#generate-button{
   background: #e55300;
-  border-radius: 5px;
+
   font-family: Michroma;
+  width:130px;
+  height: 30px;
+  margin-top: 5px;
 }
 
 #save-button-div {
   grid-area: save;
-  width: 100%;
-  height: 100%;
+  justify-content: end;
+
+}
+
+#save-button{
   font-family: Michroma;
-  width: 127.04px;
-  height: 19.96px;
   background: #9b9b9b;
-  border-radius: 5px;
+ 
+  width:130px;
+  height: 30px;
+  margin-top: 5px;
 }
 
 #output-label {
   grid-area: output-label;
-  width: 100%;
-  height: 100%;
   text-align: center;
   color: white;
   font-size: 16px;
   font-family: Michroma;
   font-weight: 400;
   /* word-wrap: break-word; */
+  align-items: flex-end;
+  justify-content: end;
+  padding-right: 10px;
+  
 }
 
 #script-name-display {
   grid-area: name-display;
-  width: 100%;
-  height: 100%;
   text-align: center;
   color: #e55300;
   font-size: 10px;
   font-family: Michroma;
   font-weight: 400;
+  align-items: flex-end;
   /* word-wrap: break-word; */
-
 }
 
 #output-box {
   grid-area: script-output;
-  width: auto;
-  height: auto;
-  background: #5d5e61;
-  border-radius: 5px;
+
+  background: #0a111c;
+  border-top: solid #e55300 3px;
+
 }
 
 /* .script-editor-box,

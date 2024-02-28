@@ -1,5 +1,8 @@
 <template>
-  <div id="script-editor-container">
+
+<!-- Add logo -->
+
+  <div id="script-editor-window">
     <script-editor-component/>
   </div>
 </template>
@@ -13,12 +16,8 @@ components: { ScriptEditorComponent }
 </script>
 
 <style scoped>
-#script-editor-container{
-  display: flex;
-  justify-content: center;
-  
+#script-editor-window{
   height: 100vh;
-  width: 100%;
   
 }
 </style>

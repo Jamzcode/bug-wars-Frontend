@@ -55,7 +55,7 @@ export default {
       // When confirm button is clicked, scriptName should be updated to the new value (user input for scriptName)
       this.confirmedName = this.scriptName; 
 
-      console.log(this.confirmedName);
+      console.log(this.confirmedName.toUpperCase());
     }
   }
 }
@@ -108,7 +108,7 @@ div {
   background: #0a111c;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-
+  box-shadow: 0 0 5px #53b290;
   display: grid;
   grid-template-columns: 0.5fr 3fr 8fr 0.5fr;
   grid-template-rows: 0.5fr 1fr 8fr 1fr 1fr 8fr 0.5fr;
@@ -151,22 +151,38 @@ div {
   height: 30px;
   font-family: Michroma;
   background: #53b290;
-  border: #53b290;
+  border: 1px solid #3a7e66;
 
   margin-bottom: 5px;
 }
+
+
+
 
 #script-input-box {
   grid-area: script-input;
   background: #0a111c;
   border: none;
+  flex-direction: column;
+  margin-top: 5px;
+  border-left: solid #53b290 3px;
+  height: 95%;
+  padding-left: 5px;
 }
 
 #script-input {
   width: 100%;
-  /* border: none; */
+  border: none;
   /* border-left:#53b290; */
   background: #0a111c;
+  font-family: Orbitron;
+  color:#53b290;
+
+
+}
+
+#script-input::placeholder{
+  color:#53b290;
 }
 
 #script-input::before {
@@ -205,6 +221,7 @@ div {
   width: 130px;
   height: 30px;
   margin-top: 5px;
+   
 }
 
 #output-label {
@@ -224,8 +241,8 @@ div {
   grid-area: name-display;
   text-align: center;
   color: #e55300;
-  font-size: 10px;
-  font-family: Michroma;
+  font-size: 15px;
+  font-family: Orbitron;
   font-weight: 400;
   align-items: flex-end;
   /* word-wrap: break-word; */

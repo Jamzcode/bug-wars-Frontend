@@ -1,7 +1,6 @@
 <template>
   <!-- Needs Logo -->
-  
-  
+
   <div id="script-editor-title-container">
     <div id="title-div">
       <h1 id="title">SCRIPT EDITOR</h1>
@@ -14,27 +13,23 @@
           <input id="name-input-field" placeholder="script-name" v-model="scriptName" />
         </div>
 
-        
         <div id="confirm-button-div">
-          <button id="confirm-button" @click="confirmName" >CONFIRM</button>
+          <button id="confirm-button" @click="confirmName">CONFIRM</button>
         </div>
 
         <div id="script-input-box">
           <input id="script-input" type="text" placeholder="Add script moves" />
         </div>
 
-        
         <div id="generate-button-div">
           <button id="generate-button">GENERATE</button>
         </div>
 
-       
         <div id="save-button-div">
           <button id="save-button">SAVE</button>
         </div>
 
-     
-        <div id="script-name-display" v-if="isConfirmed"> {{ scriptName }}</div>
+        <div id="script-name-display" >{{ confirmedName }}</div>
 
         <div id="output-label">OUTPUT :</div>
 
@@ -47,30 +42,27 @@
 <script>
 export default {
   components: {},
-  data(){
-    return{
+  data() {
+    return {
       isConfirmed: false,
-      scriptName: ''
+      scriptName: '',
+      confirmedName: 'PINEAPPLE PIZZA'
     }
-
   },
 
+  methods: {
+    confirmName() {
+      // When confirm button is clicked, scriptName should be updated to the new value (user input for scriptName)
+      this.confirmedName = this.scriptName; 
 
-
-  methods:{
-    confirmName(){
-      this.isConfirmed = !this.isConfirmed;
-      console.log(this.scriptName)
+      console.log(this.confirmedName);
     }
   }
 }
 </script>
 
 <style scoped>
-
-
-
-#logo{
+#logo {
   display: flex;
   justify-content: center;
   width: auto;
@@ -161,7 +153,6 @@ div {
   background: #53b290;
   border: #53b290;
 
-  
   margin-bottom: 5px;
 }
 
@@ -178,7 +169,7 @@ div {
   background: #0a111c;
 }
 
-#script-input::before{
+#script-input::before {
   content: '';
   position: absolute;
   background-color: #53b290;

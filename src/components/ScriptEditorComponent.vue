@@ -46,7 +46,7 @@ export default {
     return {
       isConfirmed: false,
       scriptName: '',
-      confirmedName: 'PINEAPPLE PIZZA'
+      confirmedName: ''
     }
   },
 
@@ -110,7 +110,7 @@ div {
   border-radius: 15px;
 
   display: grid;
-  grid-template-columns: 0.5fr 8fr 8fr 0.5fr;
+  grid-template-columns: 0.5fr 3fr 8fr 0.5fr;
   grid-template-rows: 0.5fr 1fr 8fr 1fr 1fr 8fr 0.5fr;
   grid-template-areas:
     '. . . .'
@@ -216,8 +216,8 @@ div {
   font-weight: 400;
   /* word-wrap: break-word; */
   align-items: flex-end;
-  justify-content: end;
   padding-right: 10px;
+  width: auto;
 }
 
 #script-name-display {

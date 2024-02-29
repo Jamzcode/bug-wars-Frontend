@@ -22,7 +22,7 @@
         </div>
 
         <div id="generate-button-div">
-          <button id="generate-button">GENERATE</button>
+          <button id="generate-button"  @click="generateScript" >GENERATE</button>
         </div>
 
         <div id="save-button-div">
@@ -33,7 +33,7 @@
 
         <div id="output-label">OUTPUT :</div>
 
-        <div id="output-box"></div>
+        <div id="output-box"> {{ generatedScript }}</div>
       </div>
     </div>
   </div>
@@ -46,16 +46,20 @@ export default {
     return {
       isConfirmed: false,
       scriptName: '',
-      confirmedName: ''
-    }
+      confirmedName: '',
+      generatedScript: ''
+  }
   },
-
   methods: {
     confirmName() {
       // When confirm button is clicked, scriptName should be updated to the new value (user input for scriptName)
       this.confirmedName = this.scriptName; 
 
       console.log(this.confirmedName.toUpperCase());
+    },
+    generateScript(){
+      this.generatedScript = "Your generated script";
+      ;
     }
   }
 }
@@ -134,7 +138,7 @@ div {
   width: 130px;
   height: 30px;
   margin-bottom: 5px;
-  font-family: Michroma;
+  font-family: Orbitron;
   background-color: #0a111c;
 }
 
@@ -177,6 +181,7 @@ div {
   background: #0a111c;
   font-family: Orbitron;
   color:#53b290;
+  font-size: 15px;
 
 
 }
@@ -250,9 +255,12 @@ div {
 
 #output-box {
   grid-area: script-output;
-
+  font-family: Orbitron;
+  margin-top: 5px;
+color: yellow;
   background: #0a111c;
   border-top: solid #e55300 3px;
+  font-size: 15px;
 }
 
 /* .script-editor-box,

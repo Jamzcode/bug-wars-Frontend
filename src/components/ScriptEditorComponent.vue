@@ -11,12 +11,12 @@
     <div id="script-editor-div">
       <div id="script-editor-box">
         <div id="name-input-div">
-          <input id="name-input-field" placeholder="script-name" />
+          <input id="name-input-field" placeholder="script-name" v-model="scriptName" />
         </div>
 
         
         <div id="confirm-button-div">
-          <button id="confirm-button">CONFIRM</button>
+          <button id="confirm-button" @click="confirmName" >CONFIRM</button>
         </div>
 
         <div id="script-input-box">
@@ -34,7 +34,7 @@
         </div>
 
      
-        <div id="script-name-display">SCRIPT_NAME</div>
+        <div id="script-name-display" v-if="isConfirmed"> {{ scriptName }}</div>
 
         <div id="output-label">OUTPUT :</div>
 
@@ -45,7 +45,25 @@
 </template>
 
 <script>
-export default {}
+export default {
+  components: {},
+  data(){
+    return{
+      isConfirmed: false,
+      scriptName: ''
+    }
+
+  },
+
+
+
+  methods:{
+    confirmName(){
+      this.isConfirmed = !this.isConfirmed;
+      console.log(this.scriptName)
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -119,11 +137,13 @@ div {
 
 #name-input-field {
   border: solid #53b290 1px;
+  text-align: center;
   border-radius: 5px;
   width: 130px;
   height: 30px;
   margin-bottom: 5px;
   font-family: Michroma;
+  background-color: #0a111c;
 }
 
 #confirm-button-div {
@@ -148,11 +168,24 @@ div {
 #script-input-box {
   grid-area: script-input;
   background: #0a111c;
+  border: none;
 }
 
 #script-input {
   width: 100%;
-  border: none left#53b290 solid 3px;
+  /* border: none; */
+  /* border-left:#53b290; */
+  background: #0a111c;
+}
+
+#script-input::before{
+  content: '';
+  position: absolute;
+  background-color: #53b290;
+  width: 50%;
+  height: 10px;
+  top: 0;
+  left: 0;
 }
 
 #generate-button-div {

@@ -22,18 +22,18 @@
         </div>
 
         <div id="generate-button-div">
-          <button id="generate-button"  @click="generateScript" >GENERATE</button>
+          <button id="generate-button" @click="generateScript">GENERATE</button>
         </div>
 
         <div id="save-button-div">
           <button id="save-button">SAVE</button>
         </div>
 
-        <div id="script-name-display" >{{ confirmedName }}</div>
+        <div id="script-name-display">{{ confirmedName }}</div>
 
         <div id="output-label">OUTPUT :</div>
 
-        <div id="output-box"> {{ generatedScript }}</div>
+        <div id="output-box">{{ generatedScript }}</div>
       </div>
     </div>
   </div>
@@ -48,18 +48,17 @@ export default {
       scriptName: '',
       confirmedName: '',
       generatedScript: ''
-  }
+    }
   },
   methods: {
     confirmName() {
       // When confirm button is clicked, scriptName should be updated to the new value (user input for scriptName)
-      this.confirmedName = this.scriptName; 
+      this.confirmedName = this.scriptName
 
-      console.log(this.confirmedName.toUpperCase());
+      console.log(this.confirmedName.toUpperCase())
     },
-    generateScript(){
-      this.generatedScript = "Your generated script";
-      ;
+    generateScript() {
+      this.generatedScript = 'Your generated script'
     }
   }
 }
@@ -83,7 +82,7 @@ div {
   width: 100%;
 }
 #title-div {
-  width: 67%;
+  width: 65%;
   justify-content: flex-end;
   /* border: solid red 1px; */
 }
@@ -112,7 +111,7 @@ div {
   background: #0a111c;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  box-shadow: 0 0 5px #53b290;
+  box-shadow: 0 0 8px #53b290;
   display: grid;
   grid-template-columns: 0.5fr 3fr 8fr 0.5fr;
   grid-template-rows: 0.5fr 1fr 8fr 1fr 1fr 8fr 0.5fr;
@@ -160,9 +159,6 @@ div {
   margin-bottom: 5px;
 }
 
-
-
-
 #script-input-box {
   grid-area: script-input;
   background: #0a111c;
@@ -180,14 +176,12 @@ div {
   /* border-left:#53b290; */
   background: #0a111c;
   font-family: Orbitron;
-  color:#53b290;
+  color: #53b290;
   font-size: 15px;
-
-
 }
 
-#script-input::placeholder{
-  color:#53b290;
+#script-input::placeholder {
+  color: #53b290;
 }
 
 #script-input::before {
@@ -226,7 +220,6 @@ div {
   width: 130px;
   height: 30px;
   margin-top: 5px;
-   
 }
 
 #output-label {
@@ -257,7 +250,7 @@ div {
   grid-area: script-output;
   font-family: Orbitron;
   margin-top: 5px;
-color: yellow;
+  color: yellow;
   background: #0a111c;
   border-top: solid #e55300 3px;
   font-size: 15px;

@@ -2,32 +2,27 @@
   <div id="species-selector-container">
     <!-- Species Selector Element -->
     <div class="species-selector">
-      
-        <!-- Title -->
+      <!-- Title -->
 
-        <!-- Button Container -->
+      <!-- Button Container -->
 
-        <div id="button-container">
-          <div id="header">
-            <h3>SPECIES SELECT</h3>
-          </div>
+      <div id="button-container">
+        <div id="header">
+          <h3>SPECIES SELECT</h3>
+        </div>
 
-        
-            <div id="test-button">
-            <drop-down-component :items="scripts" />
-          </div>
-          <div id="test-button">
-            <drop-down-component :items="scripts" />
-          </div>
-          <div id="test-button">
-            <drop-down-component :items="scripts" />
-          </div>
-          <div id="test-button">
-            <drop-down-component :items="scripts" />
-          </div>
-          
-          
-        
+        <div id="test-button">
+          <drop-down-component :items="scripts" />
+        </div>
+        <div id="test-button">
+          <drop-down-component :items="scripts" />
+        </div>
+        <div id="test-button">
+          <drop-down-component :items="scripts" />
+        </div>
+        <div id="test-button">
+          <drop-down-component :items="scripts" />
+        </div>
       </div>
     </div>
   </div>
@@ -62,8 +57,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 #test-button {
   display: flex;
   justify-content: center;
@@ -75,11 +68,12 @@ export default {
   /* border-color: #ffffff; */
   border-width: 1px;
   background: #0a111c;
-
+  margin-left: 12px;
   width: 225px;
   height: 285px;
   position: relative;
-  gap: 10px;
+  box-shadow: 0 0 5px #53b290;
+
 }
 
 #button-container {

@@ -49,6 +49,7 @@ export default {}
   border-style: solid;
   border-color: #ffffff;
   border-width: 1px;
+  box-shadow: 0 0 8px #53b290;
 
   justify-content: center;
 

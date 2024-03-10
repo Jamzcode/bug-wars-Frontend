@@ -308,7 +308,6 @@ export default {
 #logo{
   background-color: none;
   border-radius: 150px;
-  border: white solid 1px;
   margin-bottom: 50px;
 
 }

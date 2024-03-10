@@ -22,6 +22,12 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <style>
+body{
+  background: linear-gradient(#141e30, #243b55);
+  height: 100vh;
+
+}
+
 nav {
   display: flex;
   justify-content: space-between;

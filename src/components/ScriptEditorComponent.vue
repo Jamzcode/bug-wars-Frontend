@@ -82,7 +82,7 @@ div {
   width: 100%;
 }
 #title-div {
-  width: 65%;
+  width: 64%;
   justify-content: flex-end;
   /* border: solid red 1px; */
 }

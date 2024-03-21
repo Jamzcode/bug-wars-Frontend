@@ -83,14 +83,15 @@ export default {}
   font-family: Michroma;
   font-weight: 400;
   word-wrap: break-word;
-  width: 825;
-  height: 507;
+  width: 825px;
+  height: 507px;
+  text-justify: inter-word;
+
 }
 
 .text-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 1100px;
   height: 1620px;
   border: solid red 3px;
@@ -112,23 +113,27 @@ export default {}
 
 .objective-container {
   display: flex;
+  justify-content: space-between;
   /* border: solid blue 3px; */
 }
 
 .battlefield-container {
   display: flex;
+  justify-content: space-between;
   flex-direction: row-reverse;
   /* border: solid red 3px; */
 }
 
 .script-editor-container {
   display: flex;
+  justify-content: space-between;
   /* border: solid green 3px; */
 }
 
 .species-script-container {
   display: flex;
   flex-direction: row-reverse;
+  justify-content: space-between;
   /* border: solid yellow 3px; */
 }
 </style>

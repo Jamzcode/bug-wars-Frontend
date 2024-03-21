@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="component-window">
     <HowToPlayComponentVue/>
   </div>
 </template>
@@ -12,5 +12,8 @@ components: {HowToPlayComponentVue},
 </script>
 
 <style scoped>
+.component-window{
+  height: 100vh;
+}
 
 </style>

@@ -5,6 +5,7 @@ import RegisterView from '@/views/RegisterView.vue'
 import GameLobbyView from '@/views/GameLobbyView.vue'
 import CreditsView from '@/views/CreditsView.vue'
 import ScriptEditorView from '@/views/ScriptEditorView.vue'
+import HowToPlayView from '@/views/HowToPlayView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +43,11 @@ const router = createRouter({
       path: '/script-editor',
       name: 'script-editor',
       component: ScriptEditorView
+    },
+    {
+      path: '/how-to-play',
+      name: 'how-to-play',
+      component: HowToPlayView
     }
   ]
 })

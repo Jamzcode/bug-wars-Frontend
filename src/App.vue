@@ -3,12 +3,21 @@
     <div class="wrapper">
       <nav>
         <div class="left-links">
-          <RouterLink id="link" to="/"> HOME |</RouterLink>
-          <RouterLink id="link" to="/login"> LOGIN </RouterLink>
+          <RouterLink class="link" to="/"> HOME </RouterLink>
+          <RouterLink v-if="!tokenExists" class="link" to="/login"> LOGIN </RouterLink>
+          <RouterLink v-if="tokenExists" class="link" to="lobby"> LOBBY </RouterLink>
+          <RouterLink v-if="tokenExists" class="link" to="/script-editor">
+            SCRIPT EDITOR
+          </RouterLink>
         </div>
         <div class="right-links">
-          <RouterLink id="link" to="/register"> REGISTER |</RouterLink>
-          <RouterLink id="link" to="/credits"> CREDITS</RouterLink>
+          <RouterLink v-if="!tokenExists" class="link" to="/register"> REGISTER </RouterLink>
+          <RouterLink class="link" id="how-to-play" to="/how-to-play"> HOW TO PLAY </RouterLink>
+          <div class="logout-route" @click="logout">
+            <RouterLink v-if="tokenExists" class="link" to="/login"> LOGOUT </RouterLink>
+          </div>
+
+          <RouterLink class="link" id="credits" to="/credits"> CREDITS </RouterLink>
         </div>
       </nav>
     </div>
@@ -17,15 +26,30 @@
   <RouterView />
 </template>
 
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
+<script>
+import { useRouter } from 'vue-router'
+import { useAuthStore } from './stores/auth'
+
+export default {
+  methods: {
+    logout() {
+      const router = useRouter()
+      useAuthStore(router).logout()
+    }
+  },
+  computed: {
+    tokenExists() {
+      const authStore = useAuthStore()
+      return authStore.$state.user.accessToken !== ''
+    }
+  }
+}
 </script>
 
 <style>
-body{
+body {
   background: linear-gradient(#141e30, #243b55);
   height: 200vh;
-
 }
 
 nav {
@@ -35,13 +59,25 @@ nav {
   margin-right: 20px;
 }
 
-#link {
+.left-links {
+  display: flex;
+  justify-content: space-around;
+  width: 450px;
+}
+
+.right-links {
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
+}
+
+.link {
   text-decoration: none;
   color: rgb(179, 179, 179);
   font-family: 'Michroma', sans-serif;
 }
 
-#link:hover {
+.link:hover {
   color: white;
 }
 </style>

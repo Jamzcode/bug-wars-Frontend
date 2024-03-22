@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
@@ -32,7 +33,10 @@ const router = createRouter({
     {
       path: '/lobby',
       name: 'lobby',
-      component: GameLobbyView
+      component: GameLobbyView,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/credits',
@@ -42,7 +46,10 @@ const router = createRouter({
     {
       path: '/script-editor',
       name: 'script-editor',
-      component: ScriptEditorView
+      component: ScriptEditorView,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/how-to-play',
@@ -50,6 +57,21 @@ const router = createRouter({
       component: HowToPlayView
     }
   ]
+})
+
+router.beforeEach(async (to) => {
+  // Check if the route requires authentication
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
+
+  if (requiresAuth) {
+    const authStore = useAuthStore()
+    await authStore.loadFromLocalStorage()
+
+    if (requiresAuth && !authStore.$state.user.accessToken) {
+      // Redirect to the login page if the user is not authenticated
+      return { name: 'login' }
+    }
+  }
 })
 
 export default router

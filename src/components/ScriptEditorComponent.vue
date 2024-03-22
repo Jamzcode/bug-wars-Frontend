@@ -1,42 +1,43 @@
 <template>
   <!-- Needs Logo -->
+  <Transition appear>
+    <div id="script-editor-title-container">
+      <div id="title-div">
+        <h1 id="title">SCRIPT EDITOR</h1>
+      </div>
 
-  <div id="script-editor-title-container">
-    <div id="title-div">
-      <h1 id="title">SCRIPT EDITOR</h1>
-    </div>
+      <!-- Adjust box to be display:grid and map out elements inside. -->
+      <div id="script-editor-div">
+        <div id="script-editor-box">
+          <div id="name-input-div">
+            <input id="name-input-field" placeholder="script-name" v-model="scriptName" />
+          </div>
 
-    <!-- Adjust box to be display:grid and map out elements inside. -->
-    <div id="script-editor-div">
-      <div id="script-editor-box">
-        <div id="name-input-div">
-          <input id="name-input-field" placeholder="script-name" v-model="scriptName" />
+          <div id="confirm-button-div">
+            <button id="confirm-button" @click="confirmName">CONFIRM</button>
+          </div>
+
+          <div id="script-input-box">
+            <input id="script-input" type="text" placeholder="Add script moves" />
+          </div>
+
+          <div id="generate-button-div">
+            <button id="generate-button" @click="generateScript">GENERATE</button>
+          </div>
+
+          <div id="save-button-div">
+            <button id="save-button">SAVE</button>
+          </div>
+
+          <div id="script-name-display">{{ confirmedName }}</div>
+
+          <div id="output-label">OUTPUT :</div>
+
+          <div id="output-box">{{ generatedScript }}</div>
         </div>
-
-        <div id="confirm-button-div">
-          <button id="confirm-button" @click="confirmName">CONFIRM</button>
-        </div>
-
-        <div id="script-input-box">
-          <input id="script-input" type="text" placeholder="Add script moves" />
-        </div>
-
-        <div id="generate-button-div">
-          <button id="generate-button" @click="generateScript">GENERATE</button>
-        </div>
-
-        <div id="save-button-div">
-          <button id="save-button">SAVE</button>
-        </div>
-
-        <div id="script-name-display">{{ confirmedName }}</div>
-
-        <div id="output-label">OUTPUT :</div>
-
-        <div id="output-box">{{ generatedScript }}</div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script>
@@ -256,8 +257,17 @@ div {
   font-size: 15px;
 }
 
-/* .script-editor-box,
-.script-editor-box * {
-  box-sizing: border-box;
-} */
+.v-enter-active,
+.v-leave-active {
+  transition:
+    opacity 2s ease,
+    transform 1s ease-in-out;
+  transform: translateY(0px);
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(100px);
+}
 </style>

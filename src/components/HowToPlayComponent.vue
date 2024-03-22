@@ -83,22 +83,22 @@
 
 <script>
 export default {
-  data(){
+  data() {
     return
   },
   methods: {
-    backToLobby(){
-      console.log("BTL");
+    backToLobby() {
+      this.$router.push({
+        path: '/lobby'
+      })
     }
   }
 }
 </script>
 
 <style scoped>
-
-
-.high-light{
-  color: #1DED0B
+.high-light {
+  color: #1ded0b;
 }
 
 #generate {
@@ -113,9 +113,8 @@ export default {
   color: gold;
 }
 
-
 #lobby-button {
-  border:#e55300;
+  border: #e55300;
   width: 700px;
   height: 100px;
   background-color: #e55300;
@@ -127,7 +126,7 @@ export default {
   word-wrap: break-word;
 }
 
-#lobby-button:hover{
+#lobby-button:hover {
   background-color: goldenrod;
 }
 

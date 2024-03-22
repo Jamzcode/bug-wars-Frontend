@@ -2,7 +2,7 @@
   <div id="HTP-container">
     <div class="text-container">
       <div class="objective-container">
-        <div class="title">OBJECTIVE</div>
+        <div class="title" id="objective-title">OBJECTIVE</div>
         <div class="text">
           Bug wars is a Battle Royale where players create a command script for their bug to be
           pitted against other bugs. In an effort to be the last species standing, bugs will attack
@@ -60,6 +60,9 @@
         </div>
       </div>
     </div>
+    <button id="lobby-button">
+      BACK TO LOBBY
+    </button>
   </div>
 </template>
 
@@ -67,7 +70,23 @@
 export default {}
 </script>
 
+
 <style scoped>
+#lobby-button{
+  border: solid purple 3px;
+  width: 700px;
+  height: 100px;
+  background-color: #e55300;
+  border-radius: 10px;
+  font-size: 40px;
+  font-family: Michroma;
+  color: black;
+  font-weight: 400;
+  word-wrap: break-word;
+ 
+
+}
+
 .title {
   text-align: center;
   color: #e55300;
@@ -84,7 +103,7 @@ export default {}
   font-weight: 400;
   word-wrap: break-word;
   width: 825px;
-  height: 507px;
+  height: auto;
   text-justify: inter-word;
 
 }
@@ -92,23 +111,35 @@ export default {}
 .text-container {
   display: flex;
   flex-direction: column;
-  width: 1100px;
-  height: 1620px;
-  border: solid red 3px;
+  justify-content: space-between;
+  width: 1050px;
+  height: 1400px;
+  /* border: solid red 3px; */
   margin-top: 50px;
+  align-content: center;
+  
+ 
+  
 
   
 }
 
 #HTP-container {
   display: flex;
+  flex-direction: column;
   width: 1150px;
-  height: 1750px;
+  height: 1650px;
   background: rgba(10, 17, 28, 0.6);
   border-radius: 30px;
-  border: chartreuse 3px solid;
-  justify-content: center;
+  /* border: chartreuse 3px solid; */
+  align-items: center;
+  gap: 50px;
+  /* justify-content: center; */
  
+}
+
+#objective-title{
+  padding-top: 40px;
 }
 
 .objective-container {

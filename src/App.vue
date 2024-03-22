@@ -31,10 +31,6 @@ import { useRouter } from 'vue-router'
 import { useAuthStore } from './stores/auth'
 
 export default {
-  return: {
-    hasToken: true
-  },
-
   methods: {
     logout() {
       const router = useRouter()

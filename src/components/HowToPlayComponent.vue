@@ -171,6 +171,7 @@ export default {
   /* border: chartreuse 3px solid; */
   align-items: center;
   gap: 50px;
+  box-shadow: 0 0 8px #53b290;
   /* justify-content: center; */
 }
 

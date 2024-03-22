@@ -24,7 +24,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <style>
 body{
   background: linear-gradient(#141e30, #243b55);
-  height: 100vh;
+  height: 200vh;
 
 }
 

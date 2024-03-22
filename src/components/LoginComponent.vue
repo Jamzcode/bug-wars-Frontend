@@ -42,21 +42,11 @@
       </form>
       <Toast />
     </div>
-    <!-- <div>
-    <div class="login">
-      <div class="welcome-banner">Welcome Back</div>
-
-      Username:<input type="text" id="username" placeholder="username" />
-
-      Password:<input type="text" id="password" placeholder="password" /> 
-      <button type="submit" id="login-button">Login</button>
-    </div>
-  </div> -->
   </Transition>
 </template>
 
 <script>
-import authService from '@/services/AuthService'
+import { useAuthStore } from '@/stores/auth'
 import Toast from 'primevue/toast'
 import PrimeButton from 'primevue/button'
 import InputText from 'primevue/inputtext'
@@ -80,38 +70,41 @@ export default {
 
   methods: {
     async login() {
-      authService
-        .login(this.user)
-        .then((response) => {
-          // console.log(this.user)
-          if (response.status === 200) {
-            this.$toast.add({
-              severity: 'success',
-              summary: 'Login successful',
-              detail: 'Login successful! Redirecting...',
-              life: 5000
-            })
-            //Confirm user was logged in
-            // console.log('You did it!!')
-          }
+      const authStore = useAuthStore()
+
+      try {
+        const loginSuccess = await authStore.login(this.user)
+        console.log('success?' + loginSuccess)
+
+        if (loginSuccess) {
+          this.$toast.add({
+            severity: 'success',
+            summary: 'Login successful',
+            detail: 'Login successful! Redirecting...',
+            life: 3000
+          })
           setTimeout(() => {
             this.$router.push({
               path: '/lobby'
             })
-          }, 5000)
+          }, 3000)
+        } else {
+          this.$toast.add({
+            severity: 'error',
+            summary: 'ERROR',
+            detail: 'Invalid username or password.',
+            life: 3000
+          })
+        }
+      } catch (error) {
+        console.error('Error during login:', error)
+        this.$toast.add({
+          severity: 'error',
+          summary: 'ERROR',
+          detail: 'An error occurred during login.',
+          life: 3000
         })
-        .catch((error) => {
-          const response = error.response
-          if (response.status === 401) {
-            this.$toast.add({
-              severity: 'error',
-              summary: 'ERROR',
-              detail: 'Invalid username or password.',
-              life: 5000
-            })
-            console.log('Invalid username or password.')
-          }
-        })
+      }
     }
   }
 }

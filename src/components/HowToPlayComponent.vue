@@ -77,15 +77,26 @@
         </div>
       </div>
     </div>
-    <button id="lobby-button">BACK TO LOBBY</button>
+    <button id="lobby-button" @click="backToLobby">BACK TO LOBBY</button>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data(){
+    return
+  },
+  methods: {
+    backToLobby(){
+      console.log("BTL");
+    }
+  }
+}
 </script>
 
 <style scoped>
+
+
 .high-light{
   color: #1DED0B
 }
@@ -104,7 +115,7 @@ export default {}
 
 
 #lobby-button {
-  border: solid purple 3px;
+  border:#e55300;
   width: 700px;
   height: 100px;
   background-color: #e55300;
@@ -114,6 +125,10 @@ export default {}
   color: black;
   font-weight: 400;
   word-wrap: break-word;
+}
+
+#lobby-button:hover{
+  background-color: goldenrod;
 }
 
 .title {

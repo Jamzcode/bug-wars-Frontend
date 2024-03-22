@@ -147,6 +147,7 @@ export default {
   word-wrap: break-word;
   width: 825px;
   height: auto;
+  text-align: justify;
   text-justify: inter-word;
 }
 

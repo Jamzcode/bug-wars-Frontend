@@ -71,7 +71,6 @@ export default {
   methods: {
     async login() {
       const authStore = useAuthStore()
-      console.log('user info: ' + authStore.user.value)
 
       try {
         const loginSuccess = await authStore.login(this.user)

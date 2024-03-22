@@ -13,6 +13,7 @@ export const useAuthStore = defineStore('auth', () => {
     roles: []
   }
   const router = useRouter()
+
   const user = ref(blankUser)
   const logoutTimer = ref(0)
   const authError = ref('')
@@ -62,12 +63,9 @@ export const useAuthStore = defineStore('auth', () => {
     if (localUser) {
       try {
         const parsedUser = JSON.parse(localUser)
-        const blankUserKeys = Object.keys(blankUser)
+        const isValidUser = Object.keys(blankUser).every((key) => key in parsedUser)
 
-        if (
-          blankUserKeys.length === Object.keys(parsedUser).length &&
-          blankUserKeys.every((key) => Object.keys(parsedUser).includes(key))
-        ) {
+        if (isValidUser) {
           user.value = parsedUser
         } else {
           logout()
@@ -94,6 +92,7 @@ export const useAuthStore = defineStore('auth', () => {
     user,
     authError,
     logout,
-    login
+    login,
+    loadFromLocalStorage
   }
 })

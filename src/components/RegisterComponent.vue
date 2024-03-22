@@ -4,10 +4,14 @@
       <!-- <div id="image"><img src="C:\Users\james\workspace\side-projects\crusader-games\bug-wars\bug-wars-Frontend\src\assets\bugwars-logo.png" alt=""></div> -->
 
       <div id="register">
-
-        <div > <img id="logo" src="..\assets\bugwars-logo.png
-          " alt="logo"></div>
-
+        <div>
+          <img
+            id="logo"
+            src="..\assets\bugwars-logo.png
+          "
+            alt="logo"
+          />
+        </div>
 
         <form @submit.prevent="register">
           <div id="fields">
@@ -189,7 +193,7 @@ export default {
                 severity: 'error',
                 summary: 'Username exists',
                 detail: 'Please choose a different username',
-                life: 5000
+                life: 3000
               })
               this.throwUsernameError = true
               return false
@@ -203,7 +207,7 @@ export default {
             severity: 'error',
             summary: 'ERROR',
             detail: 'Please review your information.',
-            life: 5000
+            life: 3000
           })
         }
       }
@@ -222,7 +226,7 @@ export default {
                 severity: 'error',
                 summary: 'Email exists',
                 detail: 'Please choose a different email',
-                life: 5000
+                life: 3000
               })
               this.throwEmailError = true
               return false
@@ -236,7 +240,7 @@ export default {
             severity: 'error',
             summary: 'ERROR',
             detail: 'Please review your information.',
-            life: 5000
+            life: 3000
           })
         }
       }
@@ -263,15 +267,15 @@ export default {
                 severity: 'success',
                 summary: 'Registration successful',
                 detail:
-                  'Thank you for registering. You will be redirected to sign in after 5 seconds.',
-                life: 5000
+                  'Thank you for registering. You will be redirected to sign in after 3 seconds.',
+                life: 3000
               })
             }
             setTimeout(() => {
               this.$router.push({
                 path: '/login'
               })
-            }, 5000)
+            }, 3000)
           })
           .catch((error) => {
             const response = error.response
@@ -297,7 +301,7 @@ export default {
           severity: 'error',
           summary: 'ERROR',
           detail: 'Please review your information.',
-          life: 5000
+          life: 3000
         })
       }
     }
@@ -305,14 +309,11 @@ export default {
 }
 </script>
 <style scoped>
-#logo{
+#logo {
   background-color: none;
   border-radius: 150px;
   margin-bottom: 50px;
-
 }
-
-
 
 body {
   margin: 0;
@@ -320,15 +321,6 @@ body {
   font-family: sans-serif;
   background: linear-gradient(#141e30, #243b55);
   font-family: 'Michroma', sans-serif;
-
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-
-  grid-template-areas: 
-  ". logo ."
-  ". register ."
-  ; */
 }
 
 #register {
@@ -338,8 +330,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-
-  
 }
 
 h2 h6 {
@@ -359,7 +349,6 @@ h2 h6 {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-
 }
 
 .err-msg {
@@ -378,7 +367,6 @@ h2 h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .v-enter-active,
@@ -394,8 +382,4 @@ h2 h6 {
   opacity: 0;
   transform: translateY(100px);
 }
-/* #image{
-  grid-area: image;
-} */
-
 </style>

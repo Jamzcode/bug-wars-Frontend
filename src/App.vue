@@ -61,8 +61,8 @@ nav {
 
 .left-links {
   display: flex;
-  justify-content: space-between;
-  width: 400px;
+  justify-content: space-around;
+  width: 450px;
 }
 
 .right-links {

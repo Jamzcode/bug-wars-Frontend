@@ -1,5 +1,5 @@
 <template>
-  <div id="HTP-container">
+  <div id="HTP-container" :style="{ height: HTPContainerHeight + 'px' }">
     <div class="text-container">
       <Accordion :multiple="true" :activeIndex="[0]">
         <AccordionTab header="OBJECTIVE">
@@ -103,17 +103,22 @@ import { useAuthStore } from '@/stores/auth'
 
 export default {
   data() {
-    return
+    return {
+      HTPContainerHeight: 0,
+      hasToken: true
+    }
   },
-  return: {
-    hasToken: true
-  },
-
   methods: {
     backToLobby() {
       this.$router.push({
         path: '/lobby'
       })
+    },
+    calculateHTPContainerHeight() {
+      const htpContainer = document.querySelector('#HTP-container')
+      if (htpContainer) {
+        this.HTPContainerHeight = htpContainer.scrollHeight
+      }
     }
   },
   computed: {
@@ -121,6 +126,14 @@ export default {
       const authStore = useAuthStore()
       return authStore.$state.user.accessToken !== ''
     }
+  },
+  mounted() {
+    // Recalculate height when component is mounted
+    this.calculateHTPContainerHeight()
+  },
+  updated() {
+    // Recalculate height when component is updated (e.g., when accordion tabs are expanded/collapsed)
+    this.calculateHTPContainerHeight()
   }
 }
 </script>
@@ -146,6 +159,7 @@ export default {
   border: #e55300;
   width: 700px;
   height: 100px;
+  margin: 20px;
   background-color: #e55300;
   border-radius: 10px;
   font-size: 40px;
@@ -196,15 +210,13 @@ export default {
   justify-content: space-between;
   flex-direction: column;
   width: 1150px;
+  min-height: 1900px;
   margin-top: 20px;
-  height: 1900px;
   background: rgba(10, 17, 28, 0.6);
   border-radius: 30px;
-  /* border: chartreuse 3px solid; */
   align-items: center;
   gap: 50px;
   box-shadow: 0 0 8px #53b290;
-  /* justify-content: center; */
 }
 
 #objective-title {

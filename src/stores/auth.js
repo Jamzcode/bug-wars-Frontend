@@ -39,7 +39,8 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       const response = await authService.login(user)
       if (response.status === 200) {
-        localStorage.setItem('user', JSON.stringify(user.value))
+        user.value = response.data
+        localStorage.setItem('user', JSON.stringify(response.data))
         return true // Login successful
       } else {
         return false // Login failed due to non-200 status code
@@ -58,23 +59,22 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function loadFromLocalStorage() {
     const localUser = localStorage.getItem('user')
-    if (localUser == null) return
+    if (localUser) {
+      try {
+        const parsedUser = JSON.parse(localUser)
+        const blankUserKeys = Object.keys(blankUser)
 
-    try {
-      const parsedUser = JSON.parse(localUser)
-      const localUserKey = Object.keys(parsedUser)
-      const userKey = Object.keys(user)
-
-      if (
-        localUserKey.length === userKey.length &&
-        localUserKey.every((key) => userKey.includes(key))
-      ) {
-        user.value = parsedUser
-      } else {
+        if (
+          blankUserKeys.length === Object.keys(parsedUser).length &&
+          blankUserKeys.every((key) => Object.keys(parsedUser).includes(key))
+        ) {
+          user.value = parsedUser
+        } else {
+          logout()
+        }
+      } catch (error) {
         logout()
       }
-    } catch (error) {
-      logout()
     }
   }
   loadFromLocalStorage()

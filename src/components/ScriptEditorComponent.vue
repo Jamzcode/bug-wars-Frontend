@@ -18,22 +18,22 @@
           </div>
 
           <div id="script-input-box">
-            <input id="script-input" type="text" placeholder="Add script moves" />
+            <div ref="editor" id="script-input"></div>
           </div>
 
           <div id="generate-button-div">
-            <button id="generate-button" @click="generateScript">GENERATE</button>
+            <button id="generate-button" @click="updateRawScript">Create Script</button>
           </div>
 
           <div id="save-button-div">
             <button id="save-button">SAVE</button>
           </div>
 
-          <div id="script-name-display">{{ confirmedName }}</div>
+          <div id="script-name-display">{{ script.name }}</div>
 
           <div id="output-label">OUTPUT :</div>
 
-          <div id="output-box">{{ generatedScript }}</div>
+          <div id="output-box">{{ script.rawScript }}</div>
         </div>
       </div>
     </div>
@@ -41,25 +41,61 @@
 </template>
 
 <script>
+import { EditorState } from '@codemirror/state'
+import { basicSetup, EditorView } from 'codemirror'
+import { autocompletion } from '@codemirror/autocomplete'
+import { useScriptStore } from '@/stores/ScriptStore'
+
 export default {
   components: {},
   data() {
     return {
-      isConfirmed: false,
       scriptName: '',
-      confirmedName: '',
-      generatedScript: ''
+      generatedScript: '',
+      content: '',
+      script: {
+        name: '',
+        rawScript: '',
+        bytecode: '',
+        isValid: false
+      },
+      editor: null
     }
   },
-  methods: {
-    confirmName() {
-      // When confirm button is clicked, scriptName should be updated to the new value (user input for scriptName)
-      this.confirmedName = this.scriptName
+  mounted() {
+    const scriptStore = useScriptStore()
 
-      console.log(this.confirmedName.toUpperCase())
+    function myCompletions(context) {
+      let before = context.matchBefore(/\w+/)
+      if (!context.explicit && !before) return null
+      return {
+        from: before ? before.from : context.pos,
+        options: [
+          ...scriptStore.commands.map((cmd) => ({ label: cmd.label, type: 'keyword' })),
+          ...scriptStore.actions.map((act) => ({ label: act.label, type: 'keyword' }))
+        ],
+        validFor: /^\w*$/
+      }
+    }
+
+    this.editor = new EditorView({
+      state: EditorState.create({
+        doc: '      ',
+        extensions: [basicSetup, autocompletion({ override: [myCompletions] })]
+      }),
+      parent: this.$refs.editor
+    })
+  },
+  methods: {
+    // TODO: Change Create Script button to call backend to create script. and if bytecode is invalid, display error
+    confirmName() {
+      this.script.name = this.scriptName
     },
-    generateScript() {
-      this.generatedScript = 'Your generated script'
+    updateRawScript() {
+      // Get the document content
+      const docContent = this.editor.state.doc.toString()
+      // Update script.rawScript with the document content
+      this.script.rawScript = docContent
     }
   }
 }
@@ -185,7 +221,7 @@ div {
   color: #53b290;
 }
 
-#script-input::before {
+/* #script-input::before {
   content: '';
   position: absolute;
   background-color: #53b290;
@@ -193,7 +229,7 @@ div {
   height: 10px;
   top: 0;
   left: 0;
-}
+} */
 
 #generate-button-div {
   grid-area: gen;
